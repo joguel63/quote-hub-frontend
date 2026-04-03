@@ -11,8 +11,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.9",
+    "@mui/material": "^7.3.9",
+    "mui-tel-input": "^10.0.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "react-hook-form": "^7.72.1",
     "react-router-dom": "7.14.0"
   },
   "devDependencies": {
@@ -28,5 +34,6 @@
     "prettier": "3.8.1",
     "typescript": "6.0.2",
     "vite": "8.0.3"
-  }
+  },
+  "packageManager": "yarn@1.22.22"
 }

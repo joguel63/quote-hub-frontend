@@ -2,16 +2,17 @@ import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 const modules = {
-  LazyQuoteHub: lazy(() => import('modules/quoteHub')),
+  LazyHome: lazy(() => import('../pages/home')),
 }
-export const RoutesProvider = () => {
+
+export const QuoteHubRouter: React.FC = () => {
   return (
     <Routes>
       <Route
-        path="/*"
+        path="/"
         element={
           <Suspense fallback={<div>Loading…</div>}>
-            <modules.LazyQuoteHub />
+            <modules.LazyHome />
           </Suspense>
         }
       />
