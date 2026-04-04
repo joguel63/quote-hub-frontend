@@ -1,3 +1,4 @@
+import { AppRoutes } from 'core/enums'
 import { AppLayout } from 'core/layouts'
 import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
@@ -10,7 +11,7 @@ export const RoutesProvider = () => {
     <Routes>
       <Route element={<AppLayout />}>
         <Route
-          path="/*"
+          path={`${AppRoutes.Quote}/*`}
           element={
             <Suspense fallback={<div>Loading…</div>}>
               <modules.LazyQuoteHub />
