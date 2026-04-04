@@ -4,3 +4,4 @@
 export { PesonalInfoForm } from './pesonalInfoForm'
 export { QuoteStepper } from './quoteStepper'
 export { CoverageRadioGroup } from './coverageRadioGroup'
+export { CoverageForm } from './coverageForm'
