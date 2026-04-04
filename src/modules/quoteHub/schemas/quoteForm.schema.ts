@@ -1,10 +1,11 @@
 import * as yup from 'yup'
 
 const personalInfoSchema = yup.object({
-  firstName: yup
+  fullName: yup
     .string()
-    .required('First name is required')
-    .max(50, 'First name cannot exceed 50 characters'),
+    .required('Full name is required')
+    .min(2, 'Full name must be at least 2 characters')
+    .max(50, 'Full name cannot exceed 50 characters'),
 
   email: yup
     .string()
@@ -39,11 +40,9 @@ const requiredIfSenior = (age: number, schema: yup.Schema) => {
 
 const coverageFormSchema = yup.object({
   coverageType: yup.string().required('Coverage type is required'),
-
   hasPreexistingConditions: yup
     .boolean()
     .when('$age', ([age], schema) => requiredIfSenior(age, schema)),
-
   preexistingConditions: yup
     .array()
     .of(yup.string().required())
@@ -52,12 +51,14 @@ const coverageFormSchema = yup.object({
       then: (schema) => schema.min(1, 'Please specify at least one preexisting condition'),
       otherwise: (schema) => schema.notRequired(),
     }),
-
   hasPrescriptions: yup.boolean().when('$age', ([age], schema) => requiredIfSenior(age, schema)),
-
   isSmoker: yup.boolean().when('$age', ([age], schema) => requiredIfSenior(age, schema)),
-
   isSpouse: yup.boolean().when('$age', ([age], schema) => requiredIfSenior(age, schema)),
 })
 
-export const quoteFormSchemas = [personalInfoSchema, coverageFormSchema]
+const fullFormSchema = yup.object({
+  ...personalInfoSchema.fields,
+  ...coverageFormSchema.fields,
+})
+
+export const quoteFormSchemas = [personalInfoSchema, coverageFormSchema, fullFormSchema]

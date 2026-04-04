@@ -1,6 +1,6 @@
-import { useQuoteFormContext } from 'modules/quoteHub/hooks'
+import { useQuoteHubContext } from 'modules/quoteHub/hooks'
 
 export const useController = () => {
-  const formMethods = useQuoteFormContext()
+  const { formMethods } = useQuoteHubContext()
   return { formMethods }
 }

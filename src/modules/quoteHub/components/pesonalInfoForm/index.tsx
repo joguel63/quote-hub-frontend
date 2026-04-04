@@ -14,7 +14,7 @@ export const PesonalInfoForm: React.FC = () => {
   return (
     <Grid container spacing={4}>
       <Grid size={{ xs: 12, sm: 6 }}>
-        <TextInput control={formMethods.control} name="firstName" label="First Name" />
+        <TextInput control={formMethods.control} name="fullname" label="Full Name" />
       </Grid>
       <Grid size={{ xs: 12, sm: 6 }}>
         <TextInput control={formMethods.control} name="email" label="Email" />

@@ -1,13 +1,11 @@
-// entry point for the module
-
-import { QuoteFormProvider } from './providers'
+import { QuoteHubContextProvider } from './providers'
 import { QuoteHubRouter } from './router'
 
 const QuoteHubModule: React.FC = () => {
   return (
-    <QuoteFormProvider>
+    <QuoteHubContextProvider>
       <QuoteHubRouter />
-    </QuoteFormProvider>
+    </QuoteHubContextProvider>
   )
 }
 
