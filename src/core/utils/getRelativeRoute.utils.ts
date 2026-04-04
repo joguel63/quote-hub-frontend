@@ -5,7 +5,6 @@
  */
 export const getRelativeRoute = (route: string): string => {
   const segments = route.split('/').filter(Boolean)
-  console.log('segments:', segments)
 
   if (segments.length === 1) return '/'
 
