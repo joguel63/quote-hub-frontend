@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material'
 import { PesonalInfoForm } from 'modules/quoteHub/components'
 
-const PersonalInformation: React.FC = () => {
+const PersonalInformationPage: React.FC = () => {
   return (
     <>
       <Box>
@@ -14,4 +14,4 @@ const PersonalInformation: React.FC = () => {
   )
 }
 
-export default PersonalInformation
+export default PersonalInformationPage
