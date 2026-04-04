@@ -1,5 +1,6 @@
-export type PesonalInfoFormProps = {}
+import { useQuoteFormContext } from 'modules/quoteHub/hooks'
 
-export const useController = (props: PesonalInfoFormProps) => {
-  return {}
+export const useController = () => {
+  const formMethods = useQuoteFormContext()
+  return { formMethods }
 }
