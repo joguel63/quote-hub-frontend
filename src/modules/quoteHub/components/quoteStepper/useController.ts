@@ -1,8 +1,18 @@
+import { AppRoutes } from 'core/enums'
+import { useLocation } from 'react-router-dom'
+
+const stepsIndex = {
+  [AppRoutes.QuotePersonalInformation]: 0,
+  [AppRoutes.QuoteCoverage]: 1,
+  [AppRoutes.QuoteSummary]: 2,
+}
+
 export const useController = () => {
+  const { pathname } = useLocation()
   const steps = [
     {
       label: 'Personal Information',
-      completed: true,
+      completed: false,
     },
     {
       label: 'Vehicle Information',
@@ -13,6 +23,6 @@ export const useController = () => {
       completed: false,
     },
   ]
-  const activeStep = 0
+  const activeStep = stepsIndex[pathname as keyof typeof stepsIndex] ?? 0
   return { steps, activeStep }
 }
