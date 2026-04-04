@@ -3,10 +3,9 @@ import { NumberInput, TextInput } from 'core/components'
 import { AppRoutes } from 'core/enums'
 import { QuoteForm } from 'modules/quoteHub/types'
 import { useNavigate } from 'react-router-dom'
-import { CoverageRadioGroup } from '../coverageRadioGroup'
 import { useController } from './useController'
 
-export const PesonalInfoForm: React.FC = () => {
+export const PesonalInformationForm: React.FC = () => {
   const { formMethods } = useController()
   const navigate = useNavigate()
 
