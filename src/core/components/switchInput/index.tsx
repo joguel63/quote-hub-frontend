@@ -1,9 +1,13 @@
 import { FormControlLabel, Switch } from '@mui/material'
 import { InputSwitchProps } from 'core/types'
 
-import { Controller } from 'react-hook-form'
+import { Controller, FieldValues } from 'react-hook-form'
 
-export const SwitchInput: React.FC<InputSwitchProps> = ({ control, name, label }) => {
+export const SwitchInput = <T extends FieldValues>({
+  control,
+  name,
+  label,
+}: InputSwitchProps<T>) => {
   return (
     <Controller
       control={control}

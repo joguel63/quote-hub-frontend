@@ -1,14 +1,14 @@
 import { TextField } from '@mui/material'
 import { InputProps } from 'core/types'
-import { Controller } from 'react-hook-form'
+import { Controller, FieldValues, Path } from 'react-hook-form'
 
-export const NumberInput: React.FC<InputProps> = (props) => {
+export const NumberInput = <T extends FieldValues>(props: InputProps<T>) => {
   const { control, name, defaultValue, ...rest } = props
   return (
     <Controller
       control={control}
-      name={name ?? ''}
-      defaultValue={defaultValue}
+      name={name}
+      defaultValue={defaultValue as T[Path<T>] | undefined}
       render={({ field, fieldState }) => (
         <TextField
           {...field}

@@ -1,6 +1,36 @@
-import { useController, type CoverageRadioGroupProps } from './useController'
+import { FormControl, FormHelperText, RadioGroup } from '@mui/material'
+import { Options } from 'modules/quoteHub/types'
+import { Control, Controller, FieldValues, Path } from 'react-hook-form'
+import { RadioCard } from './radioCard'
 
-export const CoverageRadioGroup: React.FC<CoverageRadioGroupProps> = (props) => {
-  const controller = useController(props)
-  return <div>{JSON.stringify(controller)}</div>
+type ControlledPlanRadioGroupProps<T extends FieldValues> = {
+  name: Path<T>
+  control: Control<T>
+  options: Options[]
+}
+
+export const CoverageRadioGroup = <T extends FieldValues>({
+  name,
+  control,
+  options,
+}: ControlledPlanRadioGroupProps<T>) => {
+  return (
+    <Controller
+      name={name}
+      control={control}
+      render={({ field, fieldState }) => (
+        <FormControl error={!!fieldState.error} fullWidth>
+          <RadioGroup
+            row
+            value={field.value ?? ''}
+            onChange={(event) => field.onChange(event.target.value)}
+            name={field.name}
+          >
+            <RadioCard field={field} options={options} />
+          </RadioGroup>
+          {fieldState.error && <FormHelperText>{fieldState.error.message}</FormHelperText>}
+        </FormControl>
+      )}
+    />
+  )
 }

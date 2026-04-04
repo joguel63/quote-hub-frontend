@@ -1,6 +1,7 @@
 import { TextFieldProps } from '@mui/material'
-import { Control, FieldValues } from 'react-hook-form'
+import { Control, FieldValues, Path } from 'react-hook-form'
 
-export type InputProps = TextFieldProps & {
-  control: Control<FieldValues>
+export type InputProps<T extends FieldValues> = TextFieldProps & {
+  control: Control<T>
+  name: Path<T>
 }

@@ -1,6 +1,5 @@
-export { TextInput } from './textInput'
-export { NumberInput } from './numberInput'
-export { PhoneInput } from './phoneInput'
 export { Header } from './header'
+export { NumberInput } from './numberInput'
 export { Stepper } from './stepper'
 export { SwitchInput } from './switchInput'
+export { TextInput } from './textInput'
