@@ -18,10 +18,10 @@ export const quoteHub = {
       email: 'Email',
       age: 'Age',
       zipCode: 'Zip Code',
-      preexistingConditions: 'Preexisting Conditions',
-      prescriptions: 'Prescriptions',
-      smoker: 'Smoker',
-      spouse: 'Spouse',
+      preexistingConditions: 'Do you have any medical conditions?',
+      prescriptions: 'Do you take any medications regularly?',
+      smoker: 'Do you smoke or use tobacco products?',
+      spouse: 'Do you have a spouse and/or partner?',
     },
     options: {
       diabetes: 'Diabetes',
@@ -76,6 +76,8 @@ export const quoteHub = {
     title: 'Choose your coverage',
     description: 'Select the protection level and tell us about your current health needs',
     stepName: 'Coverage',
+    secondTitle: 'Let’s refine your quote',
+    secondDescription: 'Answer a few quick questions to fine-tune your estimate',
   },
   stepThree: {
     title: 'Review your information',

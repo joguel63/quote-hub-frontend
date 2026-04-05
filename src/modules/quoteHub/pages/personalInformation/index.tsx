@@ -1,5 +1,4 @@
-import { Box, Typography } from '@mui/material'
-import { PesonalInformationForm } from 'modules/quoteHub/components'
+import { PesonalInformationForm, SectionHeader } from 'modules/quoteHub/components'
 import { useTranslation } from 'react-i18next'
 
 const PersonalInformationPage: React.FC = () => {
@@ -7,12 +6,10 @@ const PersonalInformationPage: React.FC = () => {
 
   return (
     <>
-      <Box>
-        <Typography variant="h3" fontWeight="bold">
-          {t('quoteHub.stepOne.title')}
-        </Typography>
-        <Typography variant="h6">{t('quoteHub.stepOne.description')}</Typography>
-      </Box>
+      <SectionHeader
+        title={t('quoteHub.stepOne.title')}
+        description={t('quoteHub.stepOne.description')}
+      />
 
       <PesonalInformationForm />
     </>

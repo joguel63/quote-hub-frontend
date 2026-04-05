@@ -1,9 +1,10 @@
 import { Button, Grid } from '@mui/material'
-import { QuoteForm } from 'modules/quoteHub/types'
-import { CoverageRadioGroup } from '../coverageRadioGroup'
-import { useController } from './useController'
 import { MultiselectInput, SwitchInput } from 'core/components'
+import { QuoteForm } from 'modules/quoteHub/types'
 import { useTranslation } from 'react-i18next'
+import { CoverageRadioGroup } from '../coverageRadioGroup'
+import { SectionHeader } from '../sectionHeader'
+import { useController } from './useController'
 
 export const CoverageForm: React.FC = () => {
   const { formMethods, options, handleBack, handleNext } = useController()
@@ -18,6 +19,14 @@ export const CoverageForm: React.FC = () => {
           options={options}
         />
       </Grid>
+
+      <Grid size={{ xs: 12 }}>
+        <SectionHeader
+          title={t('quoteHub.stepTwo.secondTitle')}
+          description={t('quoteHub.stepTwo.secondDescription')}
+        />
+      </Grid>
+
       <Grid size={{ xs: 12 }}>
         <SwitchInput<QuoteForm>
           control={formMethods.control}

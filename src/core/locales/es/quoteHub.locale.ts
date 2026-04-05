@@ -18,10 +18,10 @@ export const quoteHub = {
       email: 'Correo electrónico',
       age: 'Edad',
       zipCode: 'Código postal',
-      preexistingConditions: 'Condiciones preexistentes',
-      prescriptions: 'Medicamentos recetados',
-      smoker: 'Fumador',
-      spouse: 'Cónyuge',
+      preexistingConditions: '¿Tienes alguna condición médica?',
+      prescriptions: '¿Tomas medicamentos regularmente?',
+      smoker: '¿Fumas o usas productos de tabaco?',
+      spouse: '¿Tienes un cónyuge y/o pareja?',
     },
     options: {
       diabetes: 'Diabetes',
@@ -64,7 +64,7 @@ export const quoteHub = {
     },
     tierLabel: 'Nivel {{index}}',
     actions: {
-      current: 'Seleccionado actualmente',
+      current: 'Seleccionado',
       select: 'Seleccionar {{title}}',
     },
   },
@@ -77,6 +77,8 @@ export const quoteHub = {
     title: 'Elige tu cobertura',
     description: 'Selecciona el nivel de protección y cuéntanos sobre tus necesidades actuales',
     stepName: 'Cobertura',
+    secondTitle: 'Mejoremos tu cotización',
+    secondDescription: 'Responde algunas preguntas rápidas para afinar tu estimación',
   },
   stepThree: {
     title: 'Revisa tu información',
