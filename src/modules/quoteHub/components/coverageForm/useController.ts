@@ -1,12 +1,18 @@
 import { AppRoutes } from 'core/enums'
 import { useQuoteHubContext } from 'modules/quoteHub/hooks'
+import { useEffect } from 'react'
+import { useWatch } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
+
+const SENIOR_AGE_THRESHOLD = 65
 
 export const useController = () => {
   const { formMethods } = useQuoteHubContext()
   const navigate = useNavigate()
   const { t } = useTranslation()
+  const age = useWatch({ control: formMethods.control, name: 'age' })
+  const isSenior = age >= SENIOR_AGE_THRESHOLD
 
   const options = [
     {
@@ -31,7 +37,20 @@ export const useController = () => {
 
   const handleBack = () => navigate(AppRoutes.QuotePersonalInformation)
 
-  const handleNext = () => navigate(AppRoutes.QuoteSummary)
+  const handleNext = () => {
+    formMethods.trigger().then((isValid) => {
+      if (isValid) navigate(AppRoutes.QuoteSummary)
+    })
+  }
 
-  return { formMethods, options, handleBack, handleNext }
+  const resetSeniorFields = () => {
+    const { age, coverageType, email, fullName, zipCode } = formMethods.getValues()
+    formMethods.reset({ age, coverageType, email, fullName, zipCode })
+  }
+
+  useEffect(() => {
+    if (!isSenior) resetSeniorFields()
+  }, [isSenior, formMethods])
+
+  return { formMethods, options, isSenior, handleBack, handleNext }
 }

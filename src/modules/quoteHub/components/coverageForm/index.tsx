@@ -8,7 +8,7 @@ import { SectionHeader } from '../sectionHeader'
 import { useController } from './useController'
 
 export const CoverageForm: React.FC = () => {
-  const { formMethods, options, handleBack, handleNext } = useController()
+  const { formMethods, options, isSenior, handleBack, handleNext } = useController()
   const { t } = useTranslation()
 
   return (
@@ -21,46 +21,49 @@ export const CoverageForm: React.FC = () => {
         />
       </Grid>
 
-      <Grid size={{ xs: 12 }}>
-        <SectionHeader
-          title={t('quoteHub.stepTwo.secondTitle')}
-          description={t('quoteHub.stepTwo.secondDescription')}
-        />
-      </Grid>
+      {isSenior && (
+        <>
+          <Grid size={{ xs: 12 }}>
+            <SectionHeader
+              title={t('quoteHub.stepTwo.secondTitle')}
+              description={t('quoteHub.stepTwo.secondDescription')}
+            />
+          </Grid>
+          <Grid size={{ xs: 12 }}>
+            <SwitchInput<QuoteForm>
+              control={formMethods.control}
+              name="hasPreexistingConditions"
+              label={t('quoteHub.inputs.labels.hasPreexistingConditions')}
+            />
+          </Grid>
 
-      <Grid size={{ xs: 12 }}>
-        <SwitchInput<QuoteForm>
-          control={formMethods.control}
-          name="hasPreexistingConditions"
-          label={t('quoteHub.inputs.labels.hasPreexistingConditions')}
-        />
-      </Grid>
+          <ConditionsMultiSelect />
 
-      <ConditionsMultiSelect />
+          <Grid size={{ xs: 12 }}>
+            <SwitchInput<QuoteForm>
+              control={formMethods.control}
+              name="hasPrescriptions"
+              label={t('quoteHub.inputs.labels.prescriptions')}
+            />
+          </Grid>
 
-      <Grid size={{ xs: 12 }}>
-        <SwitchInput<QuoteForm>
-          control={formMethods.control}
-          name="hasPrescriptions"
-          label={t('quoteHub.inputs.labels.prescriptions')}
-        />
-      </Grid>
+          <Grid size={{ xs: 12 }}>
+            <SwitchInput<QuoteForm>
+              control={formMethods.control}
+              name="isSmoker"
+              label={t('quoteHub.inputs.labels.smoker')}
+            />
+          </Grid>
 
-      <Grid size={{ xs: 12 }}>
-        <SwitchInput<QuoteForm>
-          control={formMethods.control}
-          name="isSmoker"
-          label={t('quoteHub.inputs.labels.smoker')}
-        />
-      </Grid>
-
-      <Grid size={{ xs: 12 }}>
-        <SwitchInput<QuoteForm>
-          control={formMethods.control}
-          name="isSpouse"
-          label={t('quoteHub.inputs.labels.spouse')}
-        />
-      </Grid>
+          <Grid size={{ xs: 12 }}>
+            <SwitchInput<QuoteForm>
+              control={formMethods.control}
+              name="isSpouse"
+              label={t('quoteHub.inputs.labels.spouse')}
+            />
+          </Grid>
+        </>
+      )}
 
       <Grid size={{ xs: 12 }} display="flex" justifyContent="space-between">
         <Button variant="contained" color="primary" onClick={handleBack}>
