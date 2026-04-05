@@ -1,5 +1,6 @@
 import { AppRoutes } from 'core/enums'
 import { QuoteCoverageStatus } from 'modules/quoteHub/enums'
+import { formPersistenceUtils } from 'modules/quoteHub/utils'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 type ResultLocationState = {
@@ -13,12 +14,17 @@ export const useController = () => {
 
   const status = state?.status
 
+  const cleanAndNavigateToQuote = () => {
+    formPersistenceUtils.clearFormStateFromLocalStorage()
+    navigate(AppRoutes.Quote)
+  }
+
   const handlePrimaryAction = () => {
-    if (status === QuoteCoverageStatus.Success) navigate(AppRoutes.Quote)
+    if (status === QuoteCoverageStatus.Success) cleanAndNavigateToQuote()
     else navigate(AppRoutes.QuoteSummary)
   }
 
-  const handleSecondaryAction = () => navigate(AppRoutes.Quote)
+  const handleSecondaryAction = () => cleanAndNavigateToQuote()
 
   return { status, handlePrimaryAction, handleSecondaryAction }
 }

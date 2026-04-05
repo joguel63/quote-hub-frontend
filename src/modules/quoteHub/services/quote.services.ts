@@ -2,7 +2,7 @@ import { mockApiResponse } from 'core/utils'
 import { QuoteForm } from '../types'
 
 const createQuote = async (quoteData: QuoteForm) => {
-  return await mockApiResponse<QuoteForm>(quoteData, { delay: 1000, shouldFail: false })
+  return await mockApiResponse<QuoteForm>(quoteData, { delay: 1000, shouldFail: true })
 }
 
 export const quoteServices = { createQuote }

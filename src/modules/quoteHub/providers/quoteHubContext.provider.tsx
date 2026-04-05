@@ -6,10 +6,11 @@ import * as yup from 'yup'
 
 import { AppRoutes } from 'core/enums'
 import { quoteHubContext } from '../contexts'
-import { quoteFormSchemas } from '../schemas/quoteForm.schema'
-import { QuoteForm } from '../types'
-import { quoteServices } from '../services'
 import { QuoteCoverageStatus } from '../enums'
+import { quoteFormSchemas } from '../schemas/quoteForm.schema'
+import { quoteServices } from '../services'
+import { QuoteForm } from '../types'
+import { formPersistenceUtils } from '../utils'
 
 const stepsIndex = {
   [AppRoutes.QuotePersonalInformation]: 0,
@@ -32,6 +33,7 @@ const defaultValues = {
   quoteCost: 0,
 }
 
+const localStageValues = formPersistenceUtils.getFormStateFromLocalStorage()
 export const QuoteHubContextProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const { pathname } = useLocation()
   const { createQuote } = quoteServices
@@ -41,10 +43,14 @@ export const QuoteHubContextProvider: React.FC<React.PropsWithChildren<{}>> = ({
 
   const formMethods = useForm<QuoteForm>({
     resolver: yupResolver(schema),
-    defaultValues: defaultValues,
+    defaultValues: localStageValues || defaultValues,
   })
 
-  const contextValue = useMemo(() => ({ activeStep }), [activeStep])
+  const updateFormState = () => {
+    const currentValues = formMethods.getValues()
+    formPersistenceUtils.saveFormStateToLocalStorage(currentValues)
+  }
+  const contextValue = useMemo(() => ({ activeStep, updateFormState }), [activeStep])
 
   const onSubmit = async (data: QuoteForm) => {
     try {
