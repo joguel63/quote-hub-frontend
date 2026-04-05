@@ -60,6 +60,7 @@ const coverageFormSchema = yup.object({
 const fullFormSchema = yup.object({
   ...personalInfoSchema.fields,
   ...coverageFormSchema.fields,
+  quoteCost: yup.number().required(),
 })
 
 export const quoteFormSchemas = [personalInfoSchema, coverageFormSchema, fullFormSchema]

@@ -1,7 +1,7 @@
 import { AppRoutes } from 'core/enums'
 import { coverageOptions } from 'modules/quoteHub/enums'
 import { useQuoteHubContext } from 'modules/quoteHub/hooks'
-import { getIsSenior } from 'modules/quoteHub/utils'
+import { calculateQuoteCost, getIsSenior } from 'modules/quoteHub/utils'
 import { useEffect } from 'react'
 import { useWatch } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
@@ -16,13 +16,18 @@ export const useController = () => {
 
   const handleNext = () => {
     formMethods.trigger().then((isValid) => {
-      if (isValid) navigate(AppRoutes.QuoteSummary)
+      if (isValid) {
+        const formData = formMethods.getValues()
+        const quoteCost = calculateQuoteCost(formData)
+        formMethods.setValue('quoteCost', quoteCost, { shouldDirty: true })
+        navigate(AppRoutes.QuoteSummary)
+      }
     })
   }
 
   const resetSeniorFields = () => {
-    const { age, coverageType, email, fullName, zipCode } = formMethods.getValues()
-    formMethods.reset({ age, coverageType, email, fullName, zipCode })
+    const { age, coverageType, email, fullName, zipCode, quoteCost } = formMethods.getValues()
+    formMethods.reset({ age, coverageType, email, fullName, zipCode, quoteCost })
   }
 
   useEffect(() => {

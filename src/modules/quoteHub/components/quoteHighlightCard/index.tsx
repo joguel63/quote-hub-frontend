@@ -1,11 +1,13 @@
 import { Box, Paper, Typography } from '@mui/material'
-import { useQuoteCalculation } from 'modules/quoteHub/hooks'
+import { formatters } from 'core/utils'
+import { useQuoteHubContext } from 'modules/quoteHub/hooks'
+import { useWatch } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { styles } from './styles'
-import { formatters } from 'core/utils'
 
 export const QuoteHighlightCard: React.FC = () => {
-  const { quoteCost } = useQuoteCalculation()
+  const { formMethods } = useQuoteHubContext()
+  const quoteCost = useWatch({ control: formMethods.control, name: 'quoteCost' })
   const { t } = useTranslation()
 
   return (

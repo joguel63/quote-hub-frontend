@@ -5,7 +5,7 @@ import { SummaryCard } from '../summaryCard'
 import { useController } from './useController'
 
 export const QuoteSummary: React.FC = () => {
-  const { quoteSummary, handleBack, handleNext } = useController()
+  const { quoteSummary, isSenior, handleBack } = useController()
   const { t } = useTranslation()
   return (
     <>
@@ -14,10 +14,12 @@ export const QuoteSummary: React.FC = () => {
         fields={quoteSummary.personalInformationSummary}
       />
 
-      <SummaryCard
-        title={t('quoteHub.stepThree.coverageDetails')}
-        fields={quoteSummary.coverageSummary}
-      />
+      {isSenior && (
+        <SummaryCard
+          title={t('quoteHub.stepThree.coverageDetails')}
+          fields={quoteSummary.coverageSummary}
+        />
+      )}
 
       <QuoteHighlightCard />
 
@@ -25,7 +27,7 @@ export const QuoteSummary: React.FC = () => {
         <Button variant="contained" color="primary" onClick={handleBack}>
           {t('quoteHub.common.back')}
         </Button>
-        <Button variant="contained" color="primary" onClick={handleNext}>
+        <Button variant="contained" color="primary" type="submit">
           {t('quoteHub.common.next')}
         </Button>
       </Box>

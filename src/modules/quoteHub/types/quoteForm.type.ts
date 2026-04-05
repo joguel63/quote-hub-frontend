@@ -12,4 +12,5 @@ export type QuoteForm = {
   hasPrescriptions: boolean
   isSmoker: boolean
   hasSpouse: boolean
+  quoteCost: number
 }

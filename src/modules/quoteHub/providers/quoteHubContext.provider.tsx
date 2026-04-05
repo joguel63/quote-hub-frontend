@@ -26,6 +26,7 @@ const defaultValues = {
   hasPrescriptions: false,
   isSmoker: false,
   hasSpouse: false,
+  quoteCost: 0,
 }
 
 export const QuoteHubContextProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {

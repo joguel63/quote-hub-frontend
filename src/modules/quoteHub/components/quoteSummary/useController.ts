@@ -1,16 +1,16 @@
 import { AppRoutes } from 'core/enums'
-import { useSummaryMapper } from 'modules/quoteHub/hooks'
+import { useQuoteHubContext, useSummaryMapper } from 'modules/quoteHub/hooks'
+import { getIsSenior } from 'modules/quoteHub/utils'
 import { useNavigate } from 'react-router-dom'
 
 export const useController = () => {
   const { quoteSummary } = useSummaryMapper()
+  const { formMethods } = useQuoteHubContext()
   const navigate = useNavigate()
+  const age = formMethods.getValues('age')
+  const isSenior = getIsSenior(age)
 
   const handleBack = () => navigate(AppRoutes.QuoteCoverage)
 
-  const handleNext = () => {
-    // navigate to the next page or perform any action needed
-  }
-
-  return { quoteSummary, handleBack, handleNext }
+  return { quoteSummary, isSenior, handleBack }
 }
