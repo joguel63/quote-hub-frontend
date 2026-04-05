@@ -1,19 +1,18 @@
 import { AppRoutes } from 'core/enums'
 import { CoverageValues } from 'modules/quoteHub/enums'
 import { useQuoteHubContext } from 'modules/quoteHub/hooks'
+import { getIsSenior } from 'modules/quoteHub/utils'
 import { useEffect } from 'react'
 import { useWatch } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-
-const SENIOR_AGE_THRESHOLD = 65
 
 export const useController = () => {
   const { formMethods } = useQuoteHubContext()
   const navigate = useNavigate()
   const { t } = useTranslation()
   const age = useWatch({ control: formMethods.control, name: 'age' })
-  const isSenior = age >= SENIOR_AGE_THRESHOLD
+  const isSenior = getIsSenior(age)
 
   const options = [
     {

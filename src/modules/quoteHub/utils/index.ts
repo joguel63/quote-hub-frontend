@@ -1,0 +1,1 @@
+export { getIsSenior } from './age.utils'
