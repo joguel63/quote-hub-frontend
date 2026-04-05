@@ -14,6 +14,24 @@ export const quoteHub = {
     title: 'Inicio',
     cta: 'Obtener cotización',
   },
+  result: {
+    success: {
+      title: 'Todo está listo',
+      description:
+        'Tu solicitud de cotización se envió correctamente. En breve continuaremos con los siguientes pasos.',
+    },
+    error: {
+      title: 'No pudimos completar la solicitud',
+      description:
+        'Ocurrió un problema al enviar tu información. Inténtalo nuevamente desde el resumen.',
+    },
+    actions: {
+      primarySuccess: 'Crear otra cotización',
+      primaryError: 'Intentar de nuevo',
+      secondarySuccess: 'Ir al inicio',
+      secondaryError: 'Ir al inicio',
+    },
+  },
   inputs: {
     labels: {
       fullName: 'Nombre completo',

@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMemo } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import * as yup from 'yup'
 
 import { AppRoutes } from 'core/enums'
@@ -9,11 +9,13 @@ import { quoteHubContext } from '../contexts'
 import { quoteFormSchemas } from '../schemas/quoteForm.schema'
 import { QuoteForm } from '../types'
 import { quoteServices } from '../services'
+import { QuoteCoverageStatus } from '../enums'
 
 const stepsIndex = {
   [AppRoutes.QuotePersonalInformation]: 0,
   [AppRoutes.QuoteCoverage]: 1,
   [AppRoutes.QuoteSummary]: 2,
+  [AppRoutes.QuoteResult]: 2,
 }
 
 const defaultValues = {
@@ -33,6 +35,7 @@ const defaultValues = {
 export const QuoteHubContextProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const { pathname } = useLocation()
   const { createQuote } = quoteServices
+  const navigate = useNavigate()
   const activeStep = stepsIndex[pathname as keyof typeof stepsIndex] ?? 0
   const schema = quoteFormSchemas[activeStep] as yup.AnyObjectSchema
 
@@ -44,12 +47,12 @@ export const QuoteHubContextProvider: React.FC<React.PropsWithChildren<{}>> = ({
   const contextValue = useMemo(() => ({ activeStep }), [activeStep])
 
   const onSubmit = async (data: QuoteForm) => {
-    console.log('sending:', data)
     try {
-      const response = await createQuote(data)
-      console.log('API response:', response)
+      await createQuote(data)
+      navigate(AppRoutes.QuoteResult, { state: { status: QuoteCoverageStatus.Success } })
     } catch (error) {
       console.error('Error creating quote:', error)
+      navigate(AppRoutes.QuoteResult, { state: { status: QuoteCoverageStatus.Error } })
     }
   }
 

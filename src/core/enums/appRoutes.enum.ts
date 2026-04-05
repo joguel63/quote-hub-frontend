@@ -3,4 +3,5 @@ export enum AppRoutes {
   QuotePersonalInformation = '/quote/personal-information',
   QuoteCoverage = '/quote/coverage',
   QuoteSummary = '/quote/summary',
+  QuoteResult = '/quote/result',
 }

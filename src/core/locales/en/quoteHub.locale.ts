@@ -14,6 +14,24 @@ export const quoteHub = {
     title: 'Home Page',
     cta: 'Get a Quote',
   },
+  result: {
+    success: {
+      title: 'Everything is ready',
+      description:
+        'Your quote request was sent successfully. We will continue with the next steps shortly.',
+    },
+    error: {
+      title: "We couldn't complete the request",
+      description:
+        'Something went wrong while submitting your information. Please try again from the summary.',
+    },
+    actions: {
+      primarySuccess: 'Start a new quote',
+      primaryError: 'Try again',
+      secondarySuccess: 'Go to home',
+      secondaryError: 'Back to summary',
+    },
+  },
   inputs: {
     labels: {
       fullName: 'Full Name',

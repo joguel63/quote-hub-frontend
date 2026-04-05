@@ -47,7 +47,7 @@ const coverageFormSchema = yup.object({
   preexistingConditions: yup
     .array()
     .of(yup.object({ label: yup.string().required(), value: yup.string().required() }))
-    .when('hasPreexistingConditions', (value, schema) =>
+    .when('hasPreexistingConditions', ([value], schema) =>
       value
         ? schema.min(1, i18n.t('quoteHub.inputs.errors.preexistingConditionsRequired'))
         : schema.notRequired(),

@@ -10,6 +10,7 @@ const modules = {
   LazyPersonalInformation: lazy(() => import('../pages/personalInformation')),
   LazyCoverage: lazy(() => import('../pages/coverage')),
   LazySummary: lazy(() => import('../pages/summary')),
+  LazyResult: lazy(() => import('../pages/result')),
 }
 
 export const QuoteHubRouter: React.FC = () => {
@@ -51,6 +52,15 @@ export const QuoteHubRouter: React.FC = () => {
           }
         />
       </Route>
+
+      <Route
+        path={getRelativeRoute(AppRoutes.QuoteResult)}
+        element={
+          <Suspense fallback={<div>{i18n.t('quoteHub.common.loading')}</div>}>
+            <modules.LazyResult />
+          </Suspense>
+        }
+      />
     </Routes>
   )
 }
