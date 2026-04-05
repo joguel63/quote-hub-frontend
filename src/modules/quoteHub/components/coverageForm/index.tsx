@@ -1,7 +1,8 @@
 import { Button, Grid } from '@mui/material'
-import { MultiselectInput, SwitchInput } from 'core/components'
+import { SwitchInput } from 'core/components'
 import { QuoteForm } from 'modules/quoteHub/types'
 import { useTranslation } from 'react-i18next'
+import { ConditionsMultiSelect } from '../conditionsMultiSelect'
 import { CoverageRadioGroup } from '../coverageRadioGroup'
 import { SectionHeader } from '../sectionHeader'
 import { useController } from './useController'
@@ -31,21 +32,11 @@ export const CoverageForm: React.FC = () => {
         <SwitchInput<QuoteForm>
           control={formMethods.control}
           name="hasPreexistingConditions"
-          label={t('quoteHub.inputs.labels.preexistingConditions')}
+          label={t('quoteHub.inputs.labels.hasPreexistingConditions')}
         />
       </Grid>
 
-      <Grid size={{ xs: 12 }}>
-        <MultiselectInput<QuoteForm>
-          control={formMethods.control}
-          name="preexistingConditions"
-          label={t('quoteHub.inputs.labels.preexistingConditions')}
-          options={[
-            { label: t('quoteHub.inputs.options.diabetes'), value: 'diabetes' },
-            { label: t('quoteHub.inputs.options.hypertension'), value: 'hypertension' },
-          ]}
-        />
-      </Grid>
+      <ConditionsMultiSelect />
 
       <Grid size={{ xs: 12 }}>
         <SwitchInput<QuoteForm>
