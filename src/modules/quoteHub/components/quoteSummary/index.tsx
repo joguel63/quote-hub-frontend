@@ -5,7 +5,7 @@ import { SummaryCard } from '../summaryCard'
 import { useController } from './useController'
 
 export const QuoteSummary: React.FC = () => {
-  const { quoteSummary, isSenior, handleBack } = useController()
+  const { quoteSummary, isSenior, isSubmitting, handleBack } = useController()
   const { t } = useTranslation()
   return (
     <>
@@ -24,10 +24,10 @@ export const QuoteSummary: React.FC = () => {
       <QuoteHighlightCard />
 
       <Box display="flex" justifyContent="space-between">
-        <Button variant="contained" color="primary" onClick={handleBack}>
+        <Button variant="contained" color="primary" onClick={handleBack} disabled={isSubmitting}>
           {t('quoteHub.common.back')}
         </Button>
-        <Button variant="contained" color="primary" type="submit">
+        <Button variant="contained" color="primary" type="submit" loading={isSubmitting}>
           {t('quoteHub.common.next')}
         </Button>
       </Box>

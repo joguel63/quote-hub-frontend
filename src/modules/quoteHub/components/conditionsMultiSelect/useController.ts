@@ -1,10 +1,10 @@
-import { useQuoteHubContext } from 'modules/quoteHub/hooks'
+import { QuoteForm } from 'modules/quoteHub/types'
 import { useEffect } from 'react'
-import { useWatch } from 'react-hook-form'
+import { useFormContext, useWatch } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
 export const useController = () => {
-  const { formMethods } = useQuoteHubContext()
+  const formMethods = useFormContext<QuoteForm>()
   const { t } = useTranslation()
   const hasConditions = useWatch({ control: formMethods.control, name: 'hasPreexistingConditions' })
 
