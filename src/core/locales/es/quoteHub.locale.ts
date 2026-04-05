@@ -11,7 +11,8 @@ export const quoteHub = {
     title: 'Quote Hub',
   },
   home: {
-    title: 'Inicio',
+    title: 'Obtén tu cotización en minutos',
+    description: 'Comienza con unos pocos datos y te guiaremos paso a paso hasta tu cotización.',
     cta: 'Obtener cotización',
   },
   result: {

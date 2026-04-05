@@ -11,7 +11,8 @@ export const quoteHub = {
     title: 'Quote Hub',
   },
   home: {
-    title: 'Home Page',
+    title: 'Get your quote in minutes',
+    description: 'Start with a few details and we will guide you step by step to your quote.',
     cta: 'Get a Quote',
   },
   result: {
