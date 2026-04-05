@@ -47,12 +47,11 @@ const coverageFormSchema = yup.object({
   preexistingConditions: yup
     .array()
     .of(yup.string().required())
-    .when('hasPreexistingConditions', {
-      is: true,
-      then: (schema) =>
-        schema.min(1, i18n.t('quoteHub.inputs.errors.preexistingConditionsRequired')),
-      otherwise: (schema) => schema.notRequired(),
-    }),
+    .when('hasPreexistingConditions', (value, schema) =>
+      value
+        ? schema.min(1, i18n.t('quoteHub.inputs.errors.preexistingConditionsRequired'))
+        : schema.notRequired()
+    ),
   hasPrescriptions: yup.boolean().when('$age', ([age], schema) => requiredIfSenior(age, schema)),
   isSmoker: yup.boolean().when('$age', ([age], schema) => requiredIfSenior(age, schema)),
   hasSpouse: yup.boolean().when('$age', ([age], schema) => requiredIfSenior(age, schema)),
