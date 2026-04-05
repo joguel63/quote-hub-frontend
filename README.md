@@ -1,73 +1,194 @@
-# React Templates
+# QuoteHub Frontend
 
-Opinionated starter built with Vite, React 18, TypeScript, and React Router to help you spin up front-end apps quickly.
+QuoteHub is a multi-step insurance quote flow built with React, TypeScript, MUI, React Hook Form, and `react-i18next`.
 
-## Key Features
+The current implementation includes:
 
-- Fast dev experience powered by Vite with hot module reloading.
-- Modular architecture (`src/modules`) that keeps domains and routes separated.
-- Declarative routing with `react-router-dom` and lazy loading for pages.
-- Ready-to-extend shared hooks (e.g., `useColorScheme`) and reusable components.
-- ESLint and Prettier already configured for consistent code quality.
+- a responsive landing page
+- a personal information step
+- a coverage selection step
+- a summary step
+- a result screen
+- an English/Spanish language toggle in the header
 
-## Prerequisites
+Note: quote submission is currently mocked for the challenge environment, so the app can demonstrate loading and error/result behavior without a real backend.
 
-- Node.js 18 or newer.
-- A package manager; examples below use `yarn`, but `npm` or `pnpm` work as well.
+## Setup And Run
 
-## Installation
+### Requirements
+
+- Node 22
+- Yarn 1.22.22
+
+### Install Dependencies
 
 ```bash
 yarn install
-# or
-npm install
 ```
 
-## Available Scripts
+### Run The App In Development
 
 ```bash
-yarn dev       # Start the dev server with hot reload
-yarn build     # Produce the optimized production build (TypeScript + Vite)
-yarn preview   # Serve the production build locally for validation
-yarn lint      # Run ESLint on src (fails on warnings)
-yarn format    # Format the project with Prettier
+yarn dev
 ```
 
-## Project Structure
+By default, Vite will print the local URL in the terminal.
 
-```php
-src/
-  App.tsx                # Main routes entry point
-  main.tsx               # React bootstrap with StrictMode
-  core/                  # Shared resources (router, hooks, common types)
-  modules/
-    getStarted/          # Example module with its own
-      /pages
-      /components
-      /hooks
-  assets/                # Static assets (e.g., logos)
-public/                  # Static files served by Vite
+### Run Tests
+
+```bash
+yarn test
 ```
 
-## Recommended Workflow
+### Build For Production
 
-1. Run `yarn dev` and open http://localhost:5173/.
-2. Extend or create modules inside `src/modules` for new features.
-3. Run `yarn lint` and `yarn format` before opening a pull request.
-4. Use `yarn build` and `yarn preview` to validate the production output.
+```bash
+yarn build
+```
 
-## Quick Customization
+### Preview The Production Build
 
-- **Theme:** `useColorScheme` stores the current theme (light/dark) in localStorage. Extend it to detect system preferences or add more themes.
-- **Routes:** Register new routes in `src/core/router` and add matching modules under `src/modules`.
-- **Styling:** The template relies on CSS Modules; create `*.module.css` files to keep styles scoped per component.
+```bash
+yarn preview
+```
 
-## Suggested Best Practices
+### Other Useful Commands
 
-- Re-export public items from each domain via `index.ts` files to keep imports clean.
-- Document new shared hooks and components in `src/core` for clarity.
-- Add tests or Storybook stories as the project grows.
+```bash
+yarn format
+yarn test:watch
+yarn test:coverage
+```
 
----
+## Development Process And Key Decisions
 
-You’re set to build on top of React Templates—happy coding!
+This project was developed as a practical frontend challenge, so the approach favored clear behavior, small targeted changes, and maintainability over unnecessary abstraction.
+
+Main decisions:
+
+- The app is organized with a feature-first structure around `modules/quoteHub` so the quote flow stays cohesive.
+- Shared application concerns were kept in `src/core` to avoid mixing reusable app infrastructure with feature-specific logic.
+- UI changes were implemented incrementally instead of doing a broad refactor.
+- Behavior changes and regressions were covered with tests before or alongside the implementation.
+- Internationalization was handled with `react-i18next`, and recent work ensured that translated coverage labels and summaries react correctly to language changes.
+- The home page was redesigned as a responsive entry point to the flow, keeping the visual language minimal and direct.
+- Form state is persisted in local storage so users do not lose progress when moving through the multi-step quote flow.
+
+## Architecture
+
+The application uses a modular frontend architecture with a clear split between shared app infrastructure and domain-specific code.
+
+### Core Layer
+
+`src/core` contains cross-cutting concerns used by the whole app:
+
+- shared components such as the header and common inputs
+- app layouts
+- route enums and router setup
+- theme configuration
+- localization setup and translation dictionaries
+- shared utilities and types
+
+This separation keeps reusable app concerns in one place and prevents the QuoteHub feature from becoming tightly coupled to global infrastructure.
+
+### Feature Layer
+
+`src/modules/quoteHub` contains the quote experience itself:
+
+- pages for each route in the flow
+- feature components such as forms, summary cards, and steppers
+- hooks and provider logic for feature state
+- schemas, enums, services, and utilities specific to the quoting domain
+
+This structure was chosen so the quote flow can evolve as a single bounded feature instead of scattering business logic across the app.
+
+### Routing And Layouts
+
+The app uses React Router with route-level composition:
+
+- the home page is loaded at the feature entry route
+- step pages are wrapped by a shared steps layout
+- pages are lazy-loaded through the feature router
+
+This keeps the route definitions explicit while allowing each feature to own its own navigation structure.
+
+### Forms And State
+
+React Hook Form is used for the multi-step form state.
+
+The QuoteHub provider is responsible for:
+
+- selecting the correct validation schema for the current step
+- exposing localized coverage options
+- sharing active step metadata
+- persisting form state to local storage
+- submitting the final payload through the mocked quote service
+
+This approach keeps form logic centralized while allowing page and component layers to stay focused on rendering and step-specific behavior.
+
+## Folder Structure
+
+```text
+.
+├── docs/
+├── public/
+├── src/
+│   ├── App.tsx
+│   ├── main.tsx
+│   ├── core/
+│   │   ├── components/
+│   │   ├── declarations/
+│   │   ├── enums/
+│   │   ├── layouts/
+│   │   ├── locales/
+│   │   ├── router/
+│   │   ├── theme/
+│   │   ├── types/
+│   │   └── utils/
+│   ├── modules/
+│   │   └── quoteHub/
+│   │       ├── components/
+│   │       ├── contexts/
+│   │       ├── enums/
+│   │       ├── hooks/
+│   │       ├── layouts/
+│   │       ├── pages/
+│   │       ├── providers/
+│   │       ├── router/
+│   │       ├── schemas/
+│   │       ├── services/
+│   │       ├── types/
+│   │       └── utils/
+│   ├── test/
+│   └── vite-env.d.ts
+├── package.json
+├── vite.config.ts
+├── vitest.config.ts
+└── tsconfig.json
+```
+
+## Testing And Verification
+
+The project uses Vitest and Testing Library for component, hook, and provider coverage.
+
+Current tests focus on:
+
+- form flow behavior
+- quote calculation and persistence utilities
+- provider behavior
+- summary mapping
+- localized behavior regressions
+- page-level rendering
+
+Recommended verification before considering a change complete:
+
+```bash
+yarn test
+yarn build
+```
+
+## Notes
+
+- The quote service is mocked intentionally for the challenge.
+- The result flow is useful for validating error and submission states even without a backend.
+- The README is intentionally concise and focused on the implemented app rather than the original starter template.
