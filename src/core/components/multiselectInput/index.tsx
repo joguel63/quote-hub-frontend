@@ -17,6 +17,7 @@ export const MultiselectInput = <TFieldValues extends FieldValues>(
       onChange={handleChange}
       onBlur={field.onBlur}
       disabled={props.disabled}
+      isOptionEqualToValue={(option, value) => option.value === value.value}
       renderInput={(params) => (
         <TextField
           {...params}

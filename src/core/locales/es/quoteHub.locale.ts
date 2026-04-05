@@ -4,6 +4,8 @@ export const quoteHub = {
     back: 'Atrás',
     next: 'Siguiente',
     recommended: 'Recomendado',
+    yes: 'Sí',
+    no: 'No',
   },
   header: {
     title: 'Quote Hub',
@@ -88,5 +90,22 @@ export const quoteHub = {
     title: 'Revisa tu información',
     description: 'Confirma tus datos antes de preparar tu cotización',
     stepName: 'Resumen',
+    finalMonthlyQuote: 'Cotización mensual final',
+    monthly: '/ mes',
+    personalDetails: 'Detalles personales',
+    coverageDetails: 'Detalles de cobertura',
+  },
+
+  summary: {
+    fullName: 'Nombre completo',
+    age: 'Edad',
+    email: 'Correo electrónico',
+    zipCode: 'Código postal',
+    coverageType: 'Cobertura seleccionada',
+    hasPreexistingConditions: 'Condiciones médicas',
+    existingConditions: 'Condiciones seleccionadas',
+    hasPrescriptions: 'Toma medicamentos regularmente',
+    isSmoker: 'Uso de tabaco',
+    hasSpouse: 'Incluye pareja',
   },
 }

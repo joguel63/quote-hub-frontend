@@ -1,3 +1,4 @@
+import { MultiselectOptions } from 'core/types'
 import { CoverageValues } from '../enums'
 
 export type QuoteForm = {
@@ -7,7 +8,7 @@ export type QuoteForm = {
   zipCode: string
   coverageType: CoverageValues
   hasPreexistingConditions: boolean
-  preexistingConditions?: string[]
+  preexistingConditions?: MultiselectOptions[]
   hasPrescriptions: boolean
   isSmoker: boolean
   hasSpouse: boolean
