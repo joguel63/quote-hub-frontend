@@ -1,19 +1,13 @@
 import { Button, Grid } from '@mui/material'
 import { NumberInput, TextInput } from 'core/components'
-import { AppRoutes } from 'core/enums'
 import { QuoteForm } from 'modules/quoteHub/types'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
 import { useController } from './useController'
 
 export const PesonalInformationForm: React.FC = () => {
-  const { formMethods } = useController()
-  const navigate = useNavigate()
+  const { formMethods, handleNext } = useController()
   const { t } = useTranslation()
 
-  const handleNext = () => {
-    navigate(AppRoutes.QuoteCoverage)
-  }
   return (
     <Grid container spacing={4}>
       <Grid size={{ xs: 12, sm: 6 }}>
