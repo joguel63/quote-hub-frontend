@@ -1,5 +1,7 @@
 import { createContext } from 'react'
 import { type QuoteHubContextType } from '../types'
 
-// Create the context here
-export const quoteHubContext = createContext<QuoteHubContextType>({ activeStep: 0 })
+export const quoteHubContext = createContext<QuoteHubContextType>({
+  activeStep: 0,
+  updateFormState: () => {},
+})
