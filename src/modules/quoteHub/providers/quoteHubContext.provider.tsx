@@ -15,6 +15,19 @@ const stepsIndex = {
   [AppRoutes.QuoteSummary]: 2,
 }
 
+const defaultValues = {
+  fullName: '',
+  email: '',
+  age: undefined,
+  zipCode: '',
+  coverageType: undefined,
+  hasPreexistingConditions: false,
+  preexistingConditions: [],
+  hasPrescriptions: false,
+  isSmoker: false,
+  hasSpouse: false,
+}
+
 export const QuoteHubContextProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const { pathname } = useLocation()
   const activeStep = stepsIndex[pathname as keyof typeof stepsIndex] ?? 0
@@ -22,18 +35,7 @@ export const QuoteHubContextProvider: React.FC<React.PropsWithChildren<{}>> = ({
 
   const formMethods = useForm<QuoteForm>({
     resolver: yupResolver(schema),
-    defaultValues: {
-      fullName: '',
-      email: '',
-      age: undefined,
-      zipCode: '',
-      coverageType: undefined,
-      hasPreexistingConditions: false,
-      preexistingConditions: [],
-      hasPrescriptions: false,
-      isSmoker: false,
-      hasSpouse: false,
-    },
+    defaultValues: defaultValues,
   })
 
   const contextValue = useMemo(() => ({ activeStep, formMethods }), [activeStep, formMethods])
