@@ -2,25 +2,12 @@ import { Button, Stack } from '@mui/material'
 import { AnimatedContainer } from 'core/components'
 import { AppRoutes } from 'core/enums'
 import { SectionHeader } from 'modules/quoteHub/components'
-import { CoverageValues } from 'modules/quoteHub/enums'
+import { CoverageBaseCosts, CoverageValues, QuoteFormulaMultipliers } from 'modules/quoteHub/enums'
 import { useQuoteHubContext } from 'modules/quoteHub/hooks'
 import { QuoteForm } from 'modules/quoteHub/types'
 import { getIsSenior } from 'modules/quoteHub/utils'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-
-enum QuoteFormulaMultipliers {
-  IsSenior = 1.5,
-  HasPreexistingConditions = 1.3,
-  IsSmoker = 1.2,
-  HasSpouse = 1.4,
-}
-
-enum CoverageBaseCosts {
-  Basic = 50,
-  Standard = 100,
-  Premium = 200,
-}
 
 const baseCosts: Record<CoverageValues, CoverageBaseCosts> = {
   [CoverageValues.Basic]: CoverageBaseCosts.Basic,
@@ -49,9 +36,9 @@ const calculateQuoteCost = (formData: QuoteForm): number => {
 const SummaryPage: React.FC = () => {
   const navigate = useNavigate()
   const { t } = useTranslation()
-  // const { formMethods } = useQuoteHubContext()
+  const { formMethods } = useQuoteHubContext()
 
-  // console.log(calculateQuoteCost(formMethods.getValues()))
+  console.log(calculateQuoteCost(formMethods.getValues()))
 
   const handleBack = () => {
     navigate(AppRoutes.QuoteCoverage)

@@ -2,3 +2,5 @@
 // e.g. export * from './myEnum'
 // this will allow to do: import { myEnum } from 'modules/{name}/enums'
 export { CoverageValues } from './coverageValues.enum'
+export { CoverageBaseCosts } from './coverageBaseCosts.enum'
+export { QuoteFormulaMultipliers } from './quoteFormulaMultipliers.enum'
