@@ -1,9 +1,8 @@
-import { QuoteForm } from '../types'
 import { mockApiResponse } from 'core/utils'
+import { QuoteForm } from '../types'
 
-type CreateQuoteRequest = QuoteForm & { quoteCost: number }
-const createQuote = async (quoteData: CreateQuoteRequest) => {
-  return await mockApiResponse<CreateQuoteRequest>(quoteData, { delay: 1000 })
+const createQuote = async (quoteData: QuoteForm) => {
+  return await mockApiResponse<QuoteForm>(quoteData, { delay: 1000 })
 }
 
 export const quoteServices = { createQuote }
