@@ -33,8 +33,8 @@ const defaultValues = {
   quoteCost: 0,
 }
 
-const localStageValues = formPersistenceUtils.getFormStateFromLocalStorage()
 export const QuoteHubContextProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+  const localStageValues = formPersistenceUtils.getFormStateFromLocalStorage()
   const { pathname } = useLocation()
   const { createQuote } = quoteServices
   const navigate = useNavigate()
