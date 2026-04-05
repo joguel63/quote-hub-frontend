@@ -20,7 +20,8 @@ const formatCurrency = (value: number) => {
  * @returns a localized string representation of the boolean value ('Yes' or 'No')
  */
 const formatBoolean = (value: boolean) => {
-  return value ? t('quoteHub.common.yes') : t('quoteHub.common.no')
+  if (!value) return t('quoteHub.common.no')
+  return t('quoteHub.common.yes')
 }
 
 /**
