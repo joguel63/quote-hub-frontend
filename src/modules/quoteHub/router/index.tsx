@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { StepsLayout } from '../layouts'
 import { AppRoutes } from 'core/enums'
+import i18n from 'core/locales'
 import { getRelativeRoute } from 'core/utils'
 
 const modules = {
@@ -17,7 +18,7 @@ export const QuoteHubRouter: React.FC = () => {
       <Route
         path={getRelativeRoute(AppRoutes.Quote)}
         element={
-          <Suspense fallback={<div>Loading…</div>}>
+          <Suspense fallback={<div>{i18n.t('quoteHub.common.loading')}</div>}>
             <modules.LazyHome />
           </Suspense>
         }
@@ -26,7 +27,7 @@ export const QuoteHubRouter: React.FC = () => {
         <Route
           path={getRelativeRoute(AppRoutes.QuotePersonalInformation)}
           element={
-            <Suspense fallback={<div>Loading…</div>}>
+            <Suspense fallback={<div>{i18n.t('quoteHub.common.loading')}</div>}>
               <modules.LazyPersonalInformation />
             </Suspense>
           }
@@ -35,7 +36,7 @@ export const QuoteHubRouter: React.FC = () => {
         <Route
           path={getRelativeRoute(AppRoutes.QuoteCoverage)}
           element={
-            <Suspense fallback={<div>Loading…</div>}>
+            <Suspense fallback={<div>{i18n.t('quoteHub.common.loading')}</div>}>
               <modules.LazyCoverage />
             </Suspense>
           }
@@ -44,7 +45,7 @@ export const QuoteHubRouter: React.FC = () => {
         <Route
           path={getRelativeRoute(AppRoutes.QuoteSummary)}
           element={
-            <Suspense fallback={<div>Loading…</div>}>
+            <Suspense fallback={<div>{i18n.t('quoteHub.common.loading')}</div>}>
               <modules.LazySummary />
             </Suspense>
           }

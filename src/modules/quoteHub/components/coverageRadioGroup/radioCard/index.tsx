@@ -1,6 +1,7 @@
 import { Box, Button, Radio, Stack, Typography } from '@mui/material'
 import { Options } from 'modules/quoteHub/types'
 import { ControllerRenderProps, FieldValues, Path } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { styles } from './styles'
 
 export const RadioCard = <T extends FieldValues>({
@@ -10,6 +11,8 @@ export const RadioCard = <T extends FieldValues>({
   field: ControllerRenderProps<T, Path<T>>
   options: Options[]
 }) => {
+  const { t } = useTranslation()
+
   return (
     <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} width="100%">
       {options.map((option, index) => {
@@ -17,7 +20,9 @@ export const RadioCard = <T extends FieldValues>({
 
         return (
           <Box key={option.value} sx={styles.root}>
-            {option.recommended && <Box sx={styles.recommendedChip}>RECOMMENDED</Box>}
+            {option.recommended && (
+              <Box sx={styles.recommendedChip}>{t('quoteHub.common.recommended')}</Box>
+            )}
 
             <Box
               component="label"
@@ -32,7 +37,9 @@ export const RadioCard = <T extends FieldValues>({
                 sx={{ display: 'none' }}
               />
 
-              <Typography variant="overline">{`Tier 0${index + 1}`}</Typography>
+              <Typography variant="overline">
+                {t('quoteHub.coverage.tierLabel', { index: `0${index + 1}` })}
+              </Typography>
               <Typography variant="h5" sx={styles.title}>
                 {option.title}
               </Typography>
@@ -50,7 +57,9 @@ export const RadioCard = <T extends FieldValues>({
                 sx={styles.button}
                 onClick={() => field.onChange(option.value)}
               >
-                {selected ? 'Currently Selected' : `Select ${option.title}`}
+                {selected
+                  ? t('quoteHub.coverage.actions.current')
+                  : t('quoteHub.coverage.actions.select', { title: option.title })}
               </Button>
             </Box>
           </Box>

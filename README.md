@@ -41,8 +41,8 @@ src/
   main.tsx               # React bootstrap with StrictMode
   core/                  # Shared resources (router, hooks, common types)
   modules/
-    getStarted/          # Example module with its own 
-      /pages 
+    getStarted/          # Example module with its own
+      /pages
       /components
       /hooks
   assets/                # Static assets (e.g., logos)

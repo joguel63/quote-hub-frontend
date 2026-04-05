@@ -1,29 +1,30 @@
+import i18n from 'core/locales'
 import * as yup from 'yup'
 
 const personalInfoSchema = yup.object({
   fullName: yup
     .string()
-    .required('Full name is required')
-    .min(2, 'Full name must be at least 2 characters')
-    .max(50, 'Full name cannot exceed 50 characters'),
+    .required(i18n.t('quoteHub.inputs.errors.fullNameRequired'))
+    .min(2, i18n.t('quoteHub.inputs.errors.fullNameMin'))
+    .max(50, i18n.t('quoteHub.inputs.errors.fullNameMax')),
 
   email: yup
     .string()
-    .email('Invalid email format')
-    .required('Email is required')
-    .max(100, 'Email cannot exceed 100 characters'),
+    .email(i18n.t('quoteHub.inputs.errors.emailInvalid'))
+    .required(i18n.t('quoteHub.inputs.errors.emailRequired'))
+    .max(100, i18n.t('quoteHub.inputs.errors.emailMax')),
 
   age: yup
     .number()
-    .typeError('Age must be a number')
-    .required('Age is required')
-    .min(18, 'You must be at least 18 years old')
-    .max(120, 'Age must be less than 120'),
+    .typeError(i18n.t('quoteHub.inputs.errors.ageType'))
+    .required(i18n.t('quoteHub.inputs.errors.ageRequired'))
+    .min(18, i18n.t('quoteHub.inputs.errors.ageMin'))
+    .max(120, i18n.t('quoteHub.inputs.errors.ageMax')),
 
   zipCode: yup
     .string()
-    .required('Zip code is required')
-    .matches(/^\d{5}$/, 'Zip code must be exactly 5 digits'),
+    .required(i18n.t('quoteHub.inputs.errors.zipCodeRequired'))
+    .matches(/^\d{5}$/, i18n.t('quoteHub.inputs.errors.zipCodeFormat')),
 })
 
 /**
@@ -34,12 +35,12 @@ const personalInfoSchema = yup.object({
  */
 const requiredIfSenior = (age: number, schema: yup.Schema) => {
   return age >= 65
-    ? schema.required('This field is required for applicants 65 or older')
+    ? schema.required(i18n.t('quoteHub.inputs.errors.seniorRequired'))
     : schema.notRequired()
 }
 
 const coverageFormSchema = yup.object({
-  coverageType: yup.string().required('Coverage type is required'),
+  coverageType: yup.string().required(i18n.t('quoteHub.inputs.errors.coverageTypeRequired')),
   hasPreexistingConditions: yup
     .boolean()
     .when('$age', ([age], schema) => requiredIfSenior(age, schema)),
@@ -48,7 +49,8 @@ const coverageFormSchema = yup.object({
     .of(yup.string().required())
     .when('hasPreexistingConditions', {
       is: true,
-      then: (schema) => schema.min(1, 'Please specify at least one preexisting condition'),
+      then: (schema) =>
+        schema.min(1, i18n.t('quoteHub.inputs.errors.preexistingConditionsRequired')),
       otherwise: (schema) => schema.notRequired(),
     }),
   hasPrescriptions: yup.boolean().when('$age', ([age], schema) => requiredIfSenior(age, schema)),

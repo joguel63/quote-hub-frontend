@@ -1,4 +1,5 @@
 import { AppRoutes } from 'core/enums'
+import i18n from 'core/locales'
 import { AppLayout } from 'core/layouts'
 import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
@@ -13,7 +14,7 @@ export const RoutesProvider = () => {
         <Route
           path={`${AppRoutes.Quote}/*`}
           element={
-            <Suspense fallback={<div>Loading…</div>}>
+            <Suspense fallback={<div>{i18n.t('quoteHub.common.loading')}</div>}>
               <modules.LazyQuoteHub />
             </Suspense>
           }

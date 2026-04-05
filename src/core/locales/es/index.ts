@@ -1,1 +1,3 @@
-export const es = {}
+import { quoteHub } from './quoteHub.locale'
+
+export const es = { quoteHub }

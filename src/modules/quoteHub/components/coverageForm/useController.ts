@@ -1,33 +1,33 @@
 import { AppRoutes } from 'core/enums'
 import { useQuoteHubContext } from 'modules/quoteHub/hooks'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-
-const options = [
-  {
-    value: 'basic',
-    title: 'Basic',
-    description: 'Essential coverage for standard liabilities and minor medical expenses.',
-    recommended: false,
-  },
-  {
-    value: 'standard',
-    title: 'Standard',
-    description: 'Enhanced protection with added benefits and broader coverage limits.',
-    recommended: true,
-  },
-  {
-    value: 'premium',
-    title: 'Premium',
-    description:
-      'Comprehensive vault-tier protection with global medical coverage and legal assistance.',
-    recommended: false,
-  },
-]
 
 export const useController = () => {
   const { formMethods } = useQuoteHubContext()
-
   const navigate = useNavigate()
+  const { t } = useTranslation()
+
+  const options = [
+    {
+      value: 'basic',
+      title: t('quoteHub.coverage.plans.basic.title'),
+      description: t('quoteHub.coverage.plans.basic.description'),
+      recommended: false,
+    },
+    {
+      value: 'standard',
+      title: t('quoteHub.coverage.plans.standard.title'),
+      description: t('quoteHub.coverage.plans.standard.description'),
+      recommended: true,
+    },
+    {
+      value: 'premium',
+      title: t('quoteHub.coverage.plans.premium.title'),
+      description: t('quoteHub.coverage.plans.premium.description'),
+      recommended: false,
+    },
+  ]
 
   const handleBack = () => navigate(AppRoutes.QuotePersonalInformation)
 

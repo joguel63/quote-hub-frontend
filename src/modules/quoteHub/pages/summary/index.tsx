@@ -1,9 +1,11 @@
 import { Button } from '@mui/material'
 import { AppRoutes } from 'core/enums'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 const SummaryPage: React.FC = () => {
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const handleBack = () => {
     navigate(AppRoutes.QuoteCoverage)
@@ -14,12 +16,12 @@ const SummaryPage: React.FC = () => {
   }
   return (
     <>
-      summary
+      {t('quoteHub.stepThree.title')}
       <Button variant="contained" color="primary" onClick={handleBack}>
-        Atras
+        {t('quoteHub.common.back')}
       </Button>
       <Button variant="contained" color="primary" onClick={handleNext}>
-        Siguiente
+        {t('quoteHub.common.next')}
       </Button>
     </>
   )

@@ -1,4 +1,5 @@
 import { AppRoutes } from 'core/enums'
+import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
 
 const stepsIndex = {
@@ -9,17 +10,19 @@ const stepsIndex = {
 
 export const useController = () => {
   const { pathname } = useLocation()
+  const { t } = useTranslation()
+
   const steps = [
     {
-      label: 'Personal Information',
+      label: t('quoteHub.stepOne.stepName'),
       completed: false,
     },
     {
-      label: 'Vehicle Information',
+      label: t('quoteHub.stepTwo.stepName'),
       completed: false,
     },
     {
-      label: 'Summary',
+      label: t('quoteHub.stepThree.stepName'),
       completed: false,
     },
   ]
