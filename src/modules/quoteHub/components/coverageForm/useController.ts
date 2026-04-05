@@ -1,5 +1,4 @@
 import { AppRoutes } from 'core/enums'
-import { coverageOptions } from 'modules/quoteHub/enums'
 import { useQuoteHubContext } from 'modules/quoteHub/hooks'
 import { QuoteForm } from 'modules/quoteHub/types'
 import { calculateQuoteCost, getIsSenior } from 'modules/quoteHub/utils'
@@ -10,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 export const useController = () => {
   const navigate = useNavigate()
   const formMethods = useFormContext<QuoteForm>()
-  const { updateFormState } = useQuoteHubContext()
+  const { updateFormState, coverageOptions } = useQuoteHubContext()
   const age = useWatch({ control: formMethods.control, name: 'age' })
   const isSenior = getIsSenior(age)
 

@@ -2,11 +2,12 @@ import { formatters } from 'core/utils'
 import { useMemo } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { coverageOptions } from '../enums'
 import { QuoteForm, type UseSummaryMapperReturn } from '../types'
+import { useQuoteHubContext } from './contexts'
 
 export const useSummaryMapper = (): UseSummaryMapperReturn => {
   const formMethods = useFormContext<QuoteForm>()
+  const { coverageOptions } = useQuoteHubContext()
   const { t } = useTranslation()
 
   const quoteSummary = useMemo(() => {
@@ -49,7 +50,7 @@ export const useSummaryMapper = (): UseSummaryMapperReturn => {
     ]
 
     return { personalInformationSummary, coverageSummary }
-  }, [formMethods, t])
+  }, [coverageOptions, formMethods, t])
 
   return { quoteSummary }
 }

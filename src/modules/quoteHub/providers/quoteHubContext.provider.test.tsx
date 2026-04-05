@@ -8,14 +8,52 @@ import { useFormContext } from 'react-hook-form'
 import { quoteHubContext } from '../contexts'
 import { QuoteHubContextProvider } from './quoteHubContext.provider'
 
-const { navigateMock, getPersistedStateMock, saveFormStateMock, createQuoteMock, pathnameState } =
-  vi.hoisted(() => ({
-    navigateMock: vi.fn(),
-    getPersistedStateMock: vi.fn(),
-    saveFormStateMock: vi.fn(),
-    createQuoteMock: vi.fn(),
-    pathnameState: { current: '/quote/personal-information' },
-  }))
+const {
+  navigateMock,
+  getPersistedStateMock,
+  saveFormStateMock,
+  createQuoteMock,
+  pathnameState,
+  languageState,
+} = vi.hoisted(() => ({
+  navigateMock: vi.fn(),
+  getPersistedStateMock: vi.fn(),
+  saveFormStateMock: vi.fn(),
+  createQuoteMock: vi.fn(),
+  pathnameState: { current: '/quote/personal-information' },
+  languageState: { current: 'es' },
+}))
+
+vi.mock('react-i18next', async () => {
+  const actual = await vi.importActual<typeof import('react-i18next')>('react-i18next')
+
+  return {
+    ...actual,
+    useTranslation: () => ({
+      t: (key: string) => {
+        const translations: Record<string, { es: string; en: string }> = {
+          'quoteHub.coverage.plans.basic.title': { es: 'Básico', en: 'Basic' },
+          'quoteHub.coverage.plans.basic.description': {
+            es: 'Cobertura esencial',
+            en: 'Essential coverage',
+          },
+          'quoteHub.coverage.plans.standard.title': { es: 'Estándar', en: 'Standard' },
+          'quoteHub.coverage.plans.standard.description': {
+            es: 'Protección mejorada',
+            en: 'Enhanced protection',
+          },
+          'quoteHub.coverage.plans.premium.title': { es: 'Premium', en: 'Premium' },
+          'quoteHub.coverage.plans.premium.description': {
+            es: 'Protección integral',
+            en: 'Comprehensive protection',
+          },
+        }
+
+        return translations[key]?.[languageState.current as 'es' | 'en'] ?? key
+      },
+    }),
+  }
+})
 
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual<typeof import('react-router-dom')>('react-router-dom')
@@ -56,6 +94,7 @@ const Probe = () => {
       <div data-testid="full-name">{String(formMethods.getValues('fullName'))}</div>
       <div data-testid="email">{String(formMethods.getValues('email'))}</div>
       <div data-testid="zip-code">{String(formMethods.getValues('zipCode'))}</div>
+      <div data-testid="coverage-option-title">{context.coverageOptions[0]?.title ?? ''}</div>
       <Button
         type="button"
         onClick={() => {
@@ -92,6 +131,7 @@ describe('quoteHubContext.provider', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     pathnameState.current = AppRoutes.QuotePersonalInformation
+    languageState.current = 'es'
     getPersistedStateMock.mockReturnValue(null)
   })
 
@@ -146,6 +186,22 @@ describe('quoteHubContext.provider', () => {
         quoteCost: 150,
       }),
     )
+  })
+
+  it('updates localized coverage options when the language changes', () => {
+    const { rerender } = renderProvider()
+
+    expect(screen.getByTestId('coverage-option-title')).toHaveTextContent('Básico')
+
+    languageState.current = 'en'
+
+    rerender(
+      <QuoteHubContextProvider>
+        <Probe />
+      </QuoteHubContextProvider>,
+    )
+
+    expect(screen.getByTestId('coverage-option-title')).toHaveTextContent('Basic')
   })
 
   it('navigates to result success after a successful submit', async () => {
