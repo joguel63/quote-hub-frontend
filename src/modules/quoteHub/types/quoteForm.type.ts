@@ -8,5 +8,5 @@ export type QuoteForm = {
   preexistingConditions?: string[]
   hasPrescriptions: boolean
   isSmoker: boolean
-  isSpouse: boolean
+  hasSpouse: boolean
 }

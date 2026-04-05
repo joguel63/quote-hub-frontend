@@ -58,7 +58,7 @@ export const CoverageForm: React.FC = () => {
           <Grid size={{ xs: 12 }}>
             <SwitchInput<QuoteForm>
               control={formMethods.control}
-              name="isSpouse"
+              name="hasSpouse"
               label={t('quoteHub.inputs.labels.spouse')}
             />
           </Grid>

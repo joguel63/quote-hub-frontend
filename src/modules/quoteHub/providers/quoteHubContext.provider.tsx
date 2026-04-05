@@ -22,6 +22,18 @@ export const QuoteHubContextProvider: React.FC<React.PropsWithChildren<{}>> = ({
 
   const formMethods = useForm<QuoteForm>({
     resolver: yupResolver(schema),
+    defaultValues: {
+      fullName: '',
+      email: '',
+      age: undefined,
+      zipCode: '',
+      coverageType: undefined,
+      hasPreexistingConditions: false,
+      preexistingConditions: [],
+      hasPrescriptions: false,
+      isSmoker: false,
+      hasSpouse: false,
+    },
   })
 
   const contextValue = useMemo(() => ({ activeStep, formMethods }), [activeStep, formMethods])

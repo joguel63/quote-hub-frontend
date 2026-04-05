@@ -55,7 +55,7 @@ const coverageFormSchema = yup.object({
     }),
   hasPrescriptions: yup.boolean().when('$age', ([age], schema) => requiredIfSenior(age, schema)),
   isSmoker: yup.boolean().when('$age', ([age], schema) => requiredIfSenior(age, schema)),
-  isSpouse: yup.boolean().when('$age', ([age], schema) => requiredIfSenior(age, schema)),
+  hasSpouse: yup.boolean().when('$age', ([age], schema) => requiredIfSenior(age, schema)),
 })
 
 const fullFormSchema = yup.object({
