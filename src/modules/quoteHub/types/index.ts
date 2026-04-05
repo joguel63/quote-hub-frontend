@@ -4,4 +4,4 @@
 export * from './hooks/useQuoteFormContext.type'
 export * from './contexts/quoteHubContext.type'
 export { type QuoteForm } from './quoteForm.type'
-export { type Options } from './options.type'
+export { type CoverageRadioGroupOptions } from './coverageRadioGroupOptions.type'

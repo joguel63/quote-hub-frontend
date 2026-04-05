@@ -1,4 +1,5 @@
 import { AppRoutes } from 'core/enums'
+import { CoverageValues } from 'modules/quoteHub/enums'
 import { useQuoteHubContext } from 'modules/quoteHub/hooks'
 import { useEffect } from 'react'
 import { useWatch } from 'react-hook-form'
@@ -16,19 +17,19 @@ export const useController = () => {
 
   const options = [
     {
-      value: 'basic',
+      value: CoverageValues.Basic,
       title: t('quoteHub.coverage.plans.basic.title'),
       description: t('quoteHub.coverage.plans.basic.description'),
       recommended: false,
     },
     {
-      value: 'standard',
+      value: CoverageValues.Standard,
       title: t('quoteHub.coverage.plans.standard.title'),
       description: t('quoteHub.coverage.plans.standard.description'),
       recommended: true,
     },
     {
-      value: 'premium',
+      value: CoverageValues.Premium,
       title: t('quoteHub.coverage.plans.premium.title'),
       description: t('quoteHub.coverage.plans.premium.description'),
       recommended: false,

@@ -1,5 +1,5 @@
 import { Box, Button, Radio, Stack, Typography } from '@mui/material'
-import { Options } from 'modules/quoteHub/types'
+import { CoverageRadioGroupOptions } from 'modules/quoteHub/types'
 import { ControllerRenderProps, FieldValues, Path } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { styles } from './styles'
@@ -9,14 +9,14 @@ export const RadioCard = <T extends FieldValues>({
   options,
 }: {
   field: ControllerRenderProps<T, Path<T>>
-  options: Options[]
+  options: CoverageRadioGroupOptions[]
 }) => {
   const { t } = useTranslation()
 
   return (
     <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} width="100%">
       {options.map((option, index) => {
-        const selected = field.value === option.value
+        const selected = field.value == option.value
 
         return (
           <Box key={option.value} sx={styles.root}>

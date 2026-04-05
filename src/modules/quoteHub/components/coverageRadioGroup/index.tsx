@@ -1,12 +1,12 @@
 import { FormControl, FormHelperText, RadioGroup } from '@mui/material'
-import { Options } from 'modules/quoteHub/types'
+import { CoverageRadioGroupOptions } from 'modules/quoteHub/types'
 import { Control, Controller, FieldValues, Path } from 'react-hook-form'
 import { RadioCard } from './radioCard'
 
 type ControlledPlanRadioGroupProps<T extends FieldValues> = {
   name: Path<T>
   control: Control<T>
-  options: Options[]
+  options: CoverageRadioGroupOptions[]
 }
 
 export const CoverageRadioGroup = <T extends FieldValues>({
@@ -22,7 +22,7 @@ export const CoverageRadioGroup = <T extends FieldValues>({
         <FormControl error={!!fieldState.error} fullWidth>
           <RadioGroup
             row
-            value={field.value ?? ''}
+            value={field.value}
             onChange={(event) => field.onChange(event.target.value)}
             name={field.name}
           >

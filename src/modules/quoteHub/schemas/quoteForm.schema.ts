@@ -40,7 +40,7 @@ const requiredIfSenior = (age: number, schema: yup.Schema) => {
 }
 
 const coverageFormSchema = yup.object({
-  coverageType: yup.string().required(i18n.t('quoteHub.inputs.errors.coverageTypeRequired')),
+  coverageType: yup.number().required(i18n.t('quoteHub.inputs.errors.coverageTypeRequired')),
   hasPreexistingConditions: yup
     .boolean()
     .when('$age', ([age], schema) => requiredIfSenior(age, schema)),
