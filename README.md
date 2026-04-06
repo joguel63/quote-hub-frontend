@@ -13,6 +13,12 @@ The current implementation includes:
 
 Note: quote submission is currently mocked for the challenge environment, so the app can demonstrate loading and error/result behavior without a real backend.
 
+## Live App
+
+The deployed app is available at:
+
+- `https://d2eau8zovo0x4z.cloudfront.net/quote`
+
 ## Setup And Run
 
 ### Requirements
@@ -59,6 +65,27 @@ yarn format
 yarn test:watch
 yarn test:coverage
 ```
+
+## CI/CD
+
+The repository includes a GitHub Actions deployment workflow at `.github/workflows/deploy.yml`.
+
+Current pipeline behavior:
+
+- triggers on pushes to `main`
+- runs on `ubuntu-latest`
+- installs dependencies with `yarn install`
+- configures AWS credentials from GitHub environment secrets
+- runs `yarn deploy` for the `main` environment
+
+The workflow currently uses these deployment secrets:
+
+- `AWS_ACCESS_KEY_ID_HR_DEPLOY`
+- `AWS_SECRET_ACCESS_KEY_HR_DEPLOY`
+
+The deployed application is exposed through CloudFront at:
+
+- `https://d2eau8zovo0x4z.cloudfront.net/quote`
 
 ## Development Process And Key Decisions
 

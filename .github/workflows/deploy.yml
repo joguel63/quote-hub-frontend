@@ -1,0 +1,38 @@
+name: Deploy to main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-main:
+    runs-on: ubuntu-latest
+    env:
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      S3_BUCKET: ${{ vars.S3_BUCKET }}
+      CF_DISTRIBUTION_ID: ${{ vars.CF_DISTRIBUTION_ID }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Configure AWS Credentials for Deploy
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_HR_DEPLOY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_HR_DEPLOY }}
+          aws-region: "us-east-2"
+
+      - name: Deploy to main
+        run: |
+          echo "Deploying to main branch..."
+          yarn deploy
