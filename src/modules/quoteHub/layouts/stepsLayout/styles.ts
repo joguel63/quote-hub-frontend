@@ -6,7 +6,7 @@ export const styles: SxStyles<'paper' | 'content'> = {
     overflow: 'hidden',
     borderRadius: { xs: 0, sm: 1 },
     borderColor: 'transparent',
-    maxWidth: 'md',
+    maxWidth: (theme) => theme.breakpoints.values.md,
     margin: 'auto',
     '&.stepsLayoutPaperDesktop': {
       backgroundColor: 'rgba(255, 255, 255, 0.88)',

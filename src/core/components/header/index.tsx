@@ -10,7 +10,7 @@ export const Header: React.FC = () => {
   const languageLabel = nextLanguage.toUpperCase()
 
   return (
-    <AppBar position="sticky" color="default" elevation={0}>
+    <AppBar position="sticky" color="default" >
       <Container maxWidth="lg">
         <Toolbar disableGutters sx={styles.toolbar}>
           <Box component={Link} to={AppRoutes.Quote} sx={styles.brand}>
