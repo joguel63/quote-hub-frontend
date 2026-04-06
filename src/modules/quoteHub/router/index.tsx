@@ -1,9 +1,9 @@
+import { Loader } from 'core/components'
+import { AppRoutes } from 'core/enums'
+import { getRelativeRoute } from 'core/utils'
 import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { StepsLayout } from '../layouts'
-import { AppRoutes } from 'core/enums'
-import i18n from 'core/locales'
-import { getRelativeRoute } from 'core/utils'
 
 const modules = {
   LazyHome: lazy(() => import('../pages/home')),
@@ -19,7 +19,7 @@ export const QuoteHubRouter: React.FC = () => {
       <Route
         path={getRelativeRoute(AppRoutes.Quote)}
         element={
-          <Suspense fallback={<div>{i18n.t('quoteHub.common.loading')}</div>}>
+          <Suspense fallback={<Loader />}>
             <modules.LazyHome />
           </Suspense>
         }
@@ -28,7 +28,7 @@ export const QuoteHubRouter: React.FC = () => {
         <Route
           path={getRelativeRoute(AppRoutes.QuotePersonalInformation)}
           element={
-            <Suspense fallback={<div>{i18n.t('quoteHub.common.loading')}</div>}>
+            <Suspense fallback={<Loader />}>
               <modules.LazyPersonalInformation />
             </Suspense>
           }
@@ -37,7 +37,7 @@ export const QuoteHubRouter: React.FC = () => {
         <Route
           path={getRelativeRoute(AppRoutes.QuoteCoverage)}
           element={
-            <Suspense fallback={<div>{i18n.t('quoteHub.common.loading')}</div>}>
+            <Suspense fallback={<Loader />}>
               <modules.LazyCoverage />
             </Suspense>
           }
@@ -46,7 +46,7 @@ export const QuoteHubRouter: React.FC = () => {
         <Route
           path={getRelativeRoute(AppRoutes.QuoteSummary)}
           element={
-            <Suspense fallback={<div>{i18n.t('quoteHub.common.loading')}</div>}>
+            <Suspense fallback={<Loader />}>
               <modules.LazySummary />
             </Suspense>
           }
@@ -56,7 +56,7 @@ export const QuoteHubRouter: React.FC = () => {
       <Route
         path={getRelativeRoute(AppRoutes.QuoteResult)}
         element={
-          <Suspense fallback={<div>{i18n.t('quoteHub.common.loading')}</div>}>
+          <Suspense fallback={<Loader />}>
             <modules.LazyResult />
           </Suspense>
         }

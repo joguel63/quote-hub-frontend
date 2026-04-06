@@ -66,7 +66,7 @@ export const CoverageForm: React.FC = () => {
       )}
 
       <Grid size={{ xs: 12 }} display="flex" justifyContent="space-between">
-        <Button variant="contained" color="primary" onClick={handleBack}>
+        <Button variant="outlined" color="primary" onClick={handleBack}>
           {t('quoteHub.common.back')}
         </Button>
         <Button variant="contained" color="primary" onClick={handleNext}>

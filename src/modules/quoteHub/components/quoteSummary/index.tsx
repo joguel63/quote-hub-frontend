@@ -24,11 +24,11 @@ export const QuoteSummary: React.FC = () => {
       <QuoteHighlightCard />
 
       <Box display="flex" justifyContent="space-between">
-        <Button variant="contained" color="primary" onClick={handleBack} disabled={isSubmitting}>
+        <Button variant="outlined" color="primary" onClick={handleBack} disabled={isSubmitting}>
           {t('quoteHub.common.back')}
         </Button>
         <Button variant="contained" color="primary" type="submit" loading={isSubmitting}>
-          {t('quoteHub.common.next')}
+          {t('quoteHub.common.sendQuote')}
         </Button>
       </Box>
     </>

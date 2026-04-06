@@ -1,11 +1,12 @@
 export const quoteHub = {
   common: {
     loading: 'Cargando...',
-    back: 'Atrás',
+    back: 'Volver',
     next: 'Siguiente',
     recommended: 'Recomendado',
     yes: 'Sí',
     no: 'No',
+    sendQuote: 'Enviar cotización',
   },
   header: {
     title: 'Quote Hub',

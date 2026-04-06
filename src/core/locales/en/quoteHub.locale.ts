@@ -6,6 +6,7 @@ export const quoteHub = {
     recommended: 'Recommended',
     yes: 'Yes',
     no: 'No',
+    sendQuote: 'Send Quote',
   },
   header: {
     title: 'Quote Hub',
