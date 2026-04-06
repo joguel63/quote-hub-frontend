@@ -11,7 +11,7 @@ The current implementation includes:
 - a result screen
 - an English/Spanish language toggle in the header
 
-Note: quote submission is currently mocked for the challenge environment, so the app can demonstrate loading and error/result behavior without a real backend.
+Note: quote submission is currently mocked for the test environment, so the app can demonstrate loading and error/result behavior without a real backend.
 
 ## Live App
 
@@ -89,7 +89,7 @@ The deployed application is exposed through CloudFront at:
 
 ## Development Process And Key Decisions
 
-This project was developed as a practical frontend challenge, so the approach favored clear behavior, small targeted changes, and maintainability over unnecessary abstraction.
+This project was developed as a practical frontend, so the approach favored clear behavior, small targeted changes, and maintainability over unnecessary abstraction.
 
 Main decisions:
 
@@ -216,6 +216,6 @@ yarn build
 
 ## Notes
 
-- The quote service is mocked intentionally for the challenge.
+- The quote service is mocked intentionally.
 - The result flow is useful for validating error and submission states even without a backend.
 - The README is intentionally concise and focused on the implemented app rather than the original starter template.
