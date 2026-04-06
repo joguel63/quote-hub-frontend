@@ -1,5 +1,8 @@
-import { AppBar, Button, Toolbar, Typography } from '@mui/material'
+import { AppBar, Box, Button, Container, Toolbar, Typography } from '@mui/material'
+import { AppRoutes } from 'core/enums'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
+import { styles } from './styles'
 
 export const Header: React.FC = () => {
   const { t, i18n } = useTranslation()
@@ -7,14 +10,25 @@ export const Header: React.FC = () => {
   const languageLabel = nextLanguage.toUpperCase()
 
   return (
-    <AppBar position="static" color="default">
-      <Toolbar sx={{ justifyContent: 'space-between', gap: 2 }}>
-        <Typography variant="h6">{t('quoteHub.header.title')}</Typography>
+    <AppBar position="sticky" color="default" >
+      <Container maxWidth="lg">
+        <Toolbar disableGutters sx={styles.toolbar}>
+          <Box component={Link} to={AppRoutes.Quote} sx={styles.brand}>
+            <Box aria-hidden sx={styles.brandDot} />
+            <Typography variant="h6" sx={styles.title}>
+              {t('quoteHub.header.title')}
+            </Typography>
+          </Box>
 
-        <Button color="inherit" onClick={() => i18n.changeLanguage(nextLanguage)}>
-          {languageLabel}
-        </Button>
-      </Toolbar>
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={() => i18n.changeLanguage(nextLanguage)}
+          >
+            {languageLabel}
+          </Button>
+        </Toolbar>
+      </Container>
     </AppBar>
   )
 }

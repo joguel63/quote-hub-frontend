@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react'
+import { AppRoutes } from 'core/enums'
 import userEvent from '@testing-library/user-event'
+import { MemoryRouter } from 'react-router-dom'
 import { Header } from './index'
 
 const { changeLanguageMock, languageRef } = vi.hoisted(() => ({
@@ -26,7 +28,11 @@ describe('core/components/header', () => {
   it('shows the target language and toggles to english when current language is spanish', async () => {
     const user = userEvent.setup()
 
-    render(<Header />)
+    render(
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>,
+    )
 
     await user.click(screen.getByRole('button', { name: 'EN' }))
 
@@ -36,8 +42,22 @@ describe('core/components/header', () => {
   it('shows spanish as the target language when current language is english', () => {
     languageRef.current = 'en'
 
-    render(<Header />)
+    render(
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>,
+    )
 
     expect(screen.getByRole('button', { name: 'ES' })).toBeInTheDocument()
+  })
+
+  it('links the Quote Hub brand to quote home', () => {
+    render(
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>,
+    )
+
+    expect(screen.getByRole('link', { name: 'Quote Hub' })).toHaveAttribute('href', AppRoutes.Quote)
   })
 })

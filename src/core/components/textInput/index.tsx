@@ -13,6 +13,7 @@ export const TextInput = <T extends FieldValues>(props: InputProps<T>) => {
         <TextField
           {...field}
           {...rest}
+          value={field.value ?? ''}
           error={!!fieldState.error}
           helperText={fieldState.error?.message}
           fullWidth

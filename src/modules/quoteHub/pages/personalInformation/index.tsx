@@ -15,6 +15,7 @@ const PersonalInformationPage: React.FC = () => {
     <AnimatedContainer>
       <Stack spacing={4}>
         <SectionHeader
+          eyebrow={t('quoteHub.stepOne.stepName')}
           title={t('quoteHub.stepOne.title')}
           description={t('quoteHub.stepOne.description')}
           titleRef={titleRef}

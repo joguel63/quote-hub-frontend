@@ -15,6 +15,7 @@ const SummaryPage: React.FC = () => {
     <AnimatedContainer>
       <Stack spacing={4}>
         <SectionHeader
+          eyebrow={t('quoteHub.stepThree.stepName')}
           title={t('quoteHub.stepThree.title')}
           description={t('quoteHub.stepThree.description')}
           titleRef={titleRef}

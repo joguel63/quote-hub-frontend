@@ -34,6 +34,7 @@ jobs:
           echo "Deploying to main branch..."
           echo "S3_BUCKET: $S3_BUCKET"
           echo "CF_DISTRIBUTION_ID: $CF_DISTRIBUTION_ID"
+          yarn test
           yarn build
           aws s3 sync dist/ s3://$S3_BUCKET
           aws cloudfront create-invalidation --distribution-id $CF_DISTRIBUTION_ID --paths '/*'

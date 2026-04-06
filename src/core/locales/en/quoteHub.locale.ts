@@ -12,9 +12,46 @@ export const quoteHub = {
     title: 'Quote Hub',
   },
   home: {
+    eyebrow: 'Policy quote system',
     title: 'Get your quote in minutes',
     description: 'Start with a few details and we will guide you step by step to your quote.',
     cta: 'Get a Quote',
+    helper: 'Clear pricing, guided steps and coverage options that adapt to your needs.',
+    highlights: {
+      guided: {
+        title: 'Guided flow',
+        description:
+          'Move through each step with a cleaner layout and more context where it matters.',
+      },
+      flexible: {
+        title: 'Flexible coverage',
+        description:
+          'Compare tiers quickly and fine-tune your quote with only the questions that apply.',
+      },
+      transparent: {
+        title: 'Transparent estimate',
+        description:
+          'Review your information and monthly quote in a summary designed for quick scanning.',
+      },
+    },
+    process: {
+      title: 'A simpler path to your quote',
+      description: 'Everything is organized to feel lightweight on mobile and polished on desktop.',
+      stepOne: {
+        title: 'Share the essentials',
+        description:
+          'Start with your core details so we can tailor the experience from the first screen.',
+      },
+      stepTwo: {
+        title: 'Pick a coverage level',
+        description:
+          'Explore the protection tier that fits you best and answer only the relevant questions.',
+      },
+      stepThree: {
+        title: 'Review with confidence',
+        description: 'Confirm the full picture in a clear summary before sending your request.',
+      },
+    },
   },
   result: {
     success: {

@@ -12,9 +12,47 @@ export const quoteHub = {
     title: 'Quote Hub',
   },
   home: {
+    eyebrow: 'Sistema de cotización de pólizas',
     title: 'Obtén tu cotización en minutos',
     description: 'Comienza con unos pocos datos y te guiaremos paso a paso hasta tu cotización.',
     cta: 'Obtener cotización',
+    helper: 'Precios claros, pasos guiados y coberturas que se adaptan a lo que necesitas.',
+    highlights: {
+      guided: {
+        title: 'Flujo guiado',
+        description:
+          'Avanza por cada paso con una interfaz más limpia y con contexto justo donde hace falta.',
+      },
+      flexible: {
+        title: 'Cobertura flexible',
+        description:
+          'Compara niveles rápidamente y ajusta tu cotización con solo las preguntas que aplican.',
+      },
+      transparent: {
+        title: 'Estimación transparente',
+        description:
+          'Revisa tus datos y tu cuota mensual en un resumen pensado para leerse rápido.',
+      },
+    },
+    process: {
+      title: 'Un camino más simple para cotizar',
+      description: 'Todo está organizado para sentirse liviano en mobile y más pulido en desktop.',
+      stepOne: {
+        title: 'Comparte lo esencial',
+        description:
+          'Comienza con tus datos principales para personalizar la experiencia desde la primera pantalla.',
+      },
+      stepTwo: {
+        title: 'Elige tu cobertura',
+        description:
+          'Explora el nivel de protección que mejor te encaja y responde solo lo necesario.',
+      },
+      stepThree: {
+        title: 'Revisa con confianza',
+        description:
+          'Confirma todo en un resumen claro antes de enviar tu solicitud de cotización.',
+      },
+    },
   },
   result: {
     success: {
