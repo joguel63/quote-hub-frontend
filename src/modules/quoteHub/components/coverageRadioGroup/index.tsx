@@ -22,7 +22,7 @@ export const CoverageRadioGroup = <T extends FieldValues>({
         <FormControl error={!!fieldState.error} fullWidth>
           <RadioGroup
             row
-            value={field.value}
+            value={field.value ?? ''}
             onChange={(event) => field.onChange(event.target.value)}
             name={field.name}
             aria-label="Coverage options"

@@ -5,10 +5,16 @@ import { styles } from './styles'
 export const SectionHeader: React.FC<{
   title: string
   description: string
+  eyebrow?: string
   titleRef?: RefObject<HTMLHeadingElement | null>
 }> = (props) => {
   return (
-    <Box>
+    <Box sx={styles.root}>
+      {props.eyebrow && (
+        <Typography variant="overline" sx={styles.eyebrow}>
+          {props.eyebrow}
+        </Typography>
+      )}
       <Typography component="h1" variant="h4" sx={styles.title} ref={props.titleRef} tabIndex={-1}>
         {props.title}
       </Typography>

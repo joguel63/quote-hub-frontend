@@ -1,4 +1,5 @@
-import { Stepper as MuiStepper, Step, StepLabel } from '@mui/material'
+import { Box, Step, StepLabel, Stepper as MuiStepper } from '@mui/material'
+import { styles } from './styles'
 
 export type StepperProps = {
   steps: { label: string; completed: boolean }[]
@@ -7,12 +8,14 @@ export type StepperProps = {
 
 export const Stepper: React.FC<StepperProps> = ({ steps, activeStep }) => {
   return (
-    <MuiStepper activeStep={activeStep} alternativeLabel>
-      {steps.map((step) => (
-        <Step key={step.label} completed={step.completed}>
-          <StepLabel>{step.label}</StepLabel>
-        </Step>
-      ))}
-    </MuiStepper>
+    <Box sx={styles.root}>
+      <MuiStepper activeStep={activeStep} alternativeLabel sx={styles.stepper}>
+        {steps.map((step) => (
+          <Step key={step.label} completed={step.completed}>
+            <StepLabel>{step.label}</StepLabel>
+          </Step>
+        ))}
+      </MuiStepper>
+    </Box>
   )
 }

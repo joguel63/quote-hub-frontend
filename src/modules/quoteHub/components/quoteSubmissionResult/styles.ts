@@ -1,3 +1,4 @@
+import { alpha } from '@mui/material'
 import { SxStyles } from 'core/types'
 
 export const styles: SxStyles<
@@ -6,9 +7,10 @@ export const styles: SxStyles<
   paper: {
     px: { xs: 3, sm: 5 },
     py: { xs: 4, sm: 6 },
-    borderRadius: 4,
+    borderRadius: 1,
     border: '1px solid',
     borderColor: 'divider',
+    backgroundColor: 'rgba(255, 255, 255, 0.88)',
   },
   content: {
     alignItems: 'center',
@@ -21,12 +23,14 @@ export const styles: SxStyles<
     display: 'grid',
     placeItems: 'center',
     '&.success': {
-      bgcolor: 'success.50',
+      bgcolor: (theme) => alpha(theme.palette.success.main, 0.12),
       color: 'success.main',
+      boxShadow: '0 16px 36px rgba(46, 139, 87, 0.16)',
     },
     '&.error': {
-      bgcolor: 'error.50',
+      bgcolor: (theme) => alpha(theme.palette.error.main, 0.12),
       color: 'error.main',
+      boxShadow: '0 16px 36px rgba(211, 47, 47, 0.14)',
     },
   },
   copy: {
@@ -34,6 +38,7 @@ export const styles: SxStyles<
   },
   title: {
     fontWeight: 700,
+    letterSpacing: '-0.03em',
   },
   description: {
     color: 'text.secondary',

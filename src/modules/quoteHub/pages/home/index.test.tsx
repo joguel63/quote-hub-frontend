@@ -33,6 +33,12 @@ describe('pages/home', () => {
 
     expect(screen.getByText(es.quoteHub.home.title)).toBeInTheDocument()
     expect(screen.getByText(es.quoteHub.home.description)).toBeInTheDocument()
+    expect(screen.getByText(es.quoteHub.home.eyebrow)).toBeInTheDocument()
+    expect(screen.getByText(es.quoteHub.home.helper)).toBeInTheDocument()
+    expect(screen.getByText(es.quoteHub.home.highlights.guided.title)).toBeInTheDocument()
+    expect(screen.getByText(es.quoteHub.home.highlights.flexible.title)).toBeInTheDocument()
+    expect(screen.getByText(es.quoteHub.home.process.title)).toBeInTheDocument()
+    expect(screen.getByText(es.quoteHub.home.process.stepOne.title)).toBeInTheDocument()
 
     expect(screen.getByRole('link', { name: es.quoteHub.home.cta })).toHaveAttribute(
       'href',

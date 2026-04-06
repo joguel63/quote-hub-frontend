@@ -20,7 +20,7 @@ export const styles: SxStyles<
   },
   radioContainer: {
     display: 'block',
-    borderRadius: 3,
+    borderRadius: 1,
     border: '2px solid',
     cursor: 'pointer',
     borderColor: 'grey.300',
