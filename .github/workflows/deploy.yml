@@ -8,10 +8,7 @@ on:
 jobs:
   deploy-main:
     runs-on: ubuntu-latest
-    env:
-      AWS_REGION: ${{ vars.AWS_REGION }}
-      S3_BUCKET: ${{ vars.S3_BUCKET }}
-      CF_DISTRIBUTION_ID: ${{ vars.CF_DISTRIBUTION_ID }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -36,3 +33,7 @@ jobs:
         run: |
           echo "Deploying to main branch..."
           yarn deploy
+        env:
+          AWS_REGION: ${{ vars.AWS_REGION }}
+          S3_BUCKET: ${{ vars.S3_BUCKET }}
+          CF_DISTRIBUTION_ID: ${{ vars.CF_DISTRIBUTION_ID }}
