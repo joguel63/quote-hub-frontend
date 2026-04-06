@@ -12,7 +12,6 @@ export const styles: SxStyles<'paper' | 'content'> = {
       backgroundColor: 'rgba(255, 255, 255, 0.88)',
       backdropFilter: 'blur(16px)',
       padding: 4,
-      border: '1px solid',
       borderColor: 'transparent',
       boxShadow: '0 28px 64px rgba(16, 35, 63, 0.12)',
     },

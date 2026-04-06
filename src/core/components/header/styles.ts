@@ -9,6 +9,8 @@ export const styles: SxStyles<'toolbar' | 'brand' | 'brandDot' | 'title'> = {
     display: 'flex',
     alignItems: 'center',
     gap: 1.5,
+    textDecoration: 'none',
+    color: 'inherit',
   },
   brandDot: {
     width: 12,

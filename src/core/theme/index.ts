@@ -92,27 +92,20 @@ const theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundImage: 'none',
-          backgroundColor: alpha('#FFFFFF', 0.86),
-          borderBottom: `1px solid ${alpha('#D9E3F0', 0.9)}`,
-          boxShadow: '0 10px 30px rgba(16, 35, 63, 0.08)',
-          backdropFilter: 'blur(18px)',
+          backgroundColor: '#FFFFFF',
         },
       },
     },
     MuiPaper: {
       styleOverrides: {
-        root: {
-          backgroundImage: 'none',
-          boxShadow: '0 24px 60px rgba(16, 35, 63, 0.12)',
-        },
+        root: { boxShadow: '0 24px 60px rgba(16, 35, 63, 0.12)' },
       },
     },
     MuiButton: {
       styleOverrides: {
         root: {
           minHeight: 48,
-          borderRadius: 14,
+          borderRadius: 7,
           paddingInline: 20,
         },
         containedPrimary: {
