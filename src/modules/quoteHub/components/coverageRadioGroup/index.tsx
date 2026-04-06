@@ -25,6 +25,7 @@ export const CoverageRadioGroup = <T extends FieldValues>({
             value={field.value}
             onChange={(event) => field.onChange(event.target.value)}
             name={field.name}
+            aria-label="Coverage options"
           >
             <RadioCard field={field} options={options} />
           </RadioGroup>

@@ -1,7 +1,7 @@
 import { SxStyles } from 'core/types'
 
 export const styles: SxStyles<
-  'root' | 'recommendedChip' | 'radioContainer' | 'title' | 'description' | 'button'
+  'root' | 'recommendedChip' | 'radioContainer' | 'title' | 'description' | 'button' | 'hiddenRadio'
 > = {
   root: { position: 'relative', flex: 1 },
   recommendedChip: {
@@ -34,4 +34,15 @@ export const styles: SxStyles<
   title: { mt: 1, fontWeight: 700 },
   description: { mt: 1.5 },
   button: { mt: 3 },
+  hiddenRadio: {
+    position: 'absolute',
+    width: 1,
+    height: 1,
+    p: 0,
+    m: -1,
+    overflow: 'hidden',
+    clip: 'rect(0 0 0 0)',
+    whiteSpace: 'nowrap',
+    border: 0,
+  },
 }

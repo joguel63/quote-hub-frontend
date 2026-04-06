@@ -2,8 +2,8 @@ import { Stack } from '@mui/material'
 import { AnimatedContainer } from 'core/components'
 import { AppRoutes } from 'core/enums'
 import { QuoteSubmissionResult, SectionHeader } from 'modules/quoteHub/components'
-import { Navigate, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { Navigate, useLocation } from 'react-router-dom'
 
 const ResultPage: React.FC = () => {
   const { state } = useLocation()

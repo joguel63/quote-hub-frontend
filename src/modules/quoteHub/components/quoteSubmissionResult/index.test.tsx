@@ -51,6 +51,7 @@ describe('QuoteSubmissionResult', () => {
 
     render(<QuoteSubmissionResult />)
 
+    expect(screen.getByRole('status')).toBeInTheDocument()
     expect(screen.getByText('quoteHub.result.success.title')).toBeInTheDocument()
     expect(screen.getByText('quoteHub.result.success.description')).toBeInTheDocument()
 
@@ -73,6 +74,7 @@ describe('QuoteSubmissionResult', () => {
 
     render(<QuoteSubmissionResult />)
 
+    expect(screen.getByRole('status')).toBeInTheDocument()
     expect(screen.getByText('quoteHub.result.error.title')).toBeInTheDocument()
     expect(screen.getByText('quoteHub.result.error.description')).toBeInTheDocument()
 

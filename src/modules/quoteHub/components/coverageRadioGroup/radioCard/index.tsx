@@ -34,7 +34,8 @@ export const RadioCard = <T extends FieldValues>({
                 id={`${field.name}-${option.value}`}
                 value={option.value}
                 checked={selected}
-                sx={{ display: 'none' }}
+                slotProps={{ input: { 'aria-label': option.title } }}
+                sx={styles.hiddenRadio}
               />
 
               <Typography variant="overline">

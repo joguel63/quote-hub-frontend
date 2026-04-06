@@ -6,7 +6,7 @@ export const AppLayout: React.FC = () => {
   return (
     <>
       <Header />
-      <Container sx={{ py: 4 }}>
+      <Container component="main" sx={{ py: 4 }}>
         <Outlet />
       </Container>
     </>

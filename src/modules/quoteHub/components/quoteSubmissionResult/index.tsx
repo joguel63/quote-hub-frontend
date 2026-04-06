@@ -36,7 +36,7 @@ export const QuoteSubmissionResult: React.FC = () => {
 
   return (
     <Paper elevation={0} sx={styles.paper}>
-      <Stack spacing={4} sx={styles.content}>
+      <Stack spacing={4} sx={styles.content} role="status" aria-live="polite">
         <Box className={status} sx={styles.iconWrapper}>
           <StatusIcon sx={styles.icons} />
         </Box>

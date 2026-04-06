@@ -72,7 +72,10 @@ export const QuoteHubContextProvider: React.FC<React.PropsWithChildren<{}>> = ({
     const currentValues = formMethods.getValues()
     formPersistenceUtils.saveFormStateToLocalStorage(currentValues)
   }
-  const contextValue = useMemo(() => ({ activeStep, updateFormState, coverageOptions }), [activeStep])
+  const contextValue = useMemo(
+    () => ({ activeStep, updateFormState, coverageOptions }),
+    [activeStep, coverageOptions],
+  )
 
   const onSubmit = async (data: QuoteForm) => {
     try {
