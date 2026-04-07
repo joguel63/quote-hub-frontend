@@ -104,7 +104,7 @@ export const quoteHub = {
       ageMax: 'La edad debe ser menor a 120',
       zipCodeRequired: 'El código postal es obligatorio',
       zipCodeFormat: 'El código postal debe tener exactamente 5 dígitos',
-      seniorRequired: 'Este campo es obligatorio para solicitantes de 65 años o más',
+      seniorRequired: 'Este campo es obligatorio para solicitantes mayores de 65 años',
       coverageTypeRequired: 'El tipo de cobertura es obligatorio',
       preexistingConditionsRequired: 'Indica al menos una condición preexistente',
     },

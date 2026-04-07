@@ -35,13 +35,13 @@ describe('quoteFormSchemas', () => {
     ).rejects.toThrow()
   })
 
-  it('requires senior follow-up fields when applicant is 65', async () => {
+  it('requires senior follow-up fields when applicant is 66', async () => {
     await expect(
       coverageSchema.validate(
         {
           coverageType: CoverageValues.Basic,
         },
-        { abortEarly: false, context: { age: 65 } },
+        { abortEarly: false, context: { age: 66 } },
       ),
     ).rejects.toThrow()
   })
@@ -57,7 +57,7 @@ describe('quoteFormSchemas', () => {
           isSmoker: false,
           hasSpouse: false,
         },
-        { abortEarly: false, context: { age: 65 } },
+        { abortEarly: false, context: { age: 66 } },
       ),
     ).rejects.toThrow()
   })
@@ -68,7 +68,7 @@ describe('quoteFormSchemas', () => {
         {
           fullName: 'Jane Doe',
           email: 'jane@example.com',
-          age: 65,
+          age: 66,
           zipCode: '90210',
           coverageType: CoverageValues.Standard,
           hasPreexistingConditions: false,
@@ -77,7 +77,7 @@ describe('quoteFormSchemas', () => {
           isSmoker: false,
           hasSpouse: false,
         },
-        { abortEarly: false, context: { age: 65 } },
+        { abortEarly: false, context: { age: 66 } },
       ),
     ).rejects.toThrow()
   })

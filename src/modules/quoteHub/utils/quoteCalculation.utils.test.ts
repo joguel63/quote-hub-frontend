@@ -36,8 +36,8 @@ describe('calculateQuoteCost', () => {
     )
   })
 
-  it('applies the senior multiplier when applicant is 65', () => {
-    expect(calculateQuoteCost(createFormData({ age: 65 }))).toBe(
+  it('applies the senior multiplier when applicant is 66', () => {
+    expect(calculateQuoteCost(createFormData({ age: 66 }))).toBe(
       CoverageBaseCosts.Basic * QuoteFormulaMultipliers.IsSenior,
     )
   })

@@ -103,7 +103,7 @@ export const quoteHub = {
       ageMax: 'Age must be less than 120',
       zipCodeRequired: 'Zip code is required',
       zipCodeFormat: 'Zip code must be exactly 5 digits',
-      seniorRequired: 'This field is required for applicants 65 or older',
+      seniorRequired: 'This field is required for applicants older than 65',
       coverageTypeRequired: 'Coverage type is required',
       preexistingConditionsRequired: 'Please specify at least one preexisting condition',
     },
