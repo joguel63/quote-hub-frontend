@@ -28,13 +28,13 @@ const personalInfoSchema = yup.object({
 })
 
 /**
- * Helper function to conditionally require fields based on age. If the applicant is 65 or older, certain fields become required.
+ * Helper function to conditionally require fields based on age. If the applicant is older than 65, certain fields become required.
  * @param age age of the applicant to determine if the fields should be required or not
  * @param schema  the yup schema to conditionally apply the required validation to
  * @returns  a yup schema with the appropriate required validation based on the age condition
  */
 const requiredIfSenior = (age: number, schema: yup.Schema) => {
-  return age >= 65
+  return age > 65
     ? schema.required(i18n.t('quoteHub.inputs.errors.seniorRequired'))
     : schema.notRequired()
 }
